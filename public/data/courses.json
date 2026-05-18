@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Bachelor of Business Administration",
+    "level": "Bachelor",
+    "category": "Management",
+    "description": "A widely chosen business degree covering management, marketing, finance, and entrepreneurship.",
+    "careerPaths": ["Management trainee", "Sales executive", "Entrepreneur"]
+  },
+  {
+    "name": "Bachelor of Computer Applications",
+    "level": "Bachelor",
+    "category": "Information Technology",
+    "description": "A practical software and computing program for students aiming for IT careers.",
+    "careerPaths": ["Software developer", "Web developer", "IT support"]
+  },
+  {
+    "name": "Bachelor of Science in Computer Science and Information Technology",
+    "level": "Bachelor",
+    "category": "Information Technology",
+    "description": "A computer science program combining theory, systems, and coding skills.",
+    "careerPaths": ["Software engineer", "System analyst", "Data specialist"]
+  },
+  {
+    "name": "Bachelor of Hotel Management",
+    "level": "Bachelor",
+    "category": "Hospitality",
+    "description": "A career-oriented hospitality degree covering service operations and tourism management.",
+    "careerPaths": ["Hotel supervisor", "Restaurant manager", "Tourism officer"]
+  },
+  {
+    "name": "Bachelor of Public Health",
+    "level": "Bachelor",
+    "category": "Health",
+    "description": "A health-focused program preparing students for community health and public sector roles.",
+    "careerPaths": ["Health assistant", "Program officer", "Community health worker"]
+  },
+  {
+    "name": "Bachelor of Education",
+    "level": "Bachelor",
+    "category": "Education",
+    "description": "A program for students planning teaching, training, and educational leadership roles.",
+    "careerPaths": ["Teacher", "Trainer", "Education coordinator"]
+  },
+  {
+    "name": "Bachelor of Engineering",
+    "level": "Bachelor",
+    "category": "Engineering",
+    "description": "A technical pathway spanning civil, electrical, mechanical, and computer-related branches.",
+    "careerPaths": ["Engineer", "Site supervisor", "Project assistant"]
+  },
+  {
+    "name": "Bachelor of Arts",
+    "level": "Bachelor",
+    "category": "Humanities",
+    "description": "A broad academic degree for students exploring humanities, culture, media, and social subjects.",
+    "careerPaths": ["Content writer", "Research assistant", "Community officer"]
+  },
+  {
+    "name": "Diploma in Civil Engineering",
+    "level": "Diploma",
+    "category": "Engineering",
+    "description": "A technical diploma for students seeking practical engineering and construction roles.",
+    "careerPaths": ["Junior technician", "Drafting assistant", "Site assistant"]
+  },
+  {
+    "name": "Short Course in English Communication",
+    "level": "Short Course",
+    "category": "Language",
+    "description": "A fast-track language improvement course for academic and workplace communication.",
+    "careerPaths": ["Study preparation", "Customer service", "Office support"]
+  }
+]

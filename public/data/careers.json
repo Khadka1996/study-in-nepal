@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Business and Management",
+    "summary": "Useful for students who want jobs in administration, sales, marketing, operations, and entrepreneurship.",
+    "relatedCourses": ["BBA", "MBA", "BBM"],
+    "skills": ["Communication", "Leadership", "Problem solving"]
+  },
+  {
+    "title": "Information Technology",
+    "summary": "A strong direction for software, web, support, and data-oriented careers.",
+    "relatedCourses": ["BCA", "BSc CSIT", "Diploma in IT"],
+    "skills": ["Coding", "Logic", "Analytical thinking"]
+  },
+  {
+    "title": "Hospitality and Tourism",
+    "summary": "A practical field for hotel operations, travel services, and guest-facing roles.",
+    "relatedCourses": ["Hotel Management", "Tourism Studies"],
+    "skills": ["Customer service", "Presentation", "Adaptability"]
+  },
+  {
+    "title": "Health and Public Health",
+    "summary": "Best for students interested in healthcare support, health education, and community programs.",
+    "relatedCourses": ["Public Health", "Nursing", "Health Science"],
+    "skills": ["Empathy", "Research", "Care coordination"]
+  },
+  {
+    "title": "Education and Training",
+    "summary": "Supports teaching, tutoring, learning support, and training-focused positions.",
+    "relatedCourses": ["Bachelor of Education"],
+    "skills": ["Explaining", "Planning", "Mentoring"]
+  },
+  {
+    "title": "Engineering and Construction",
+    "summary": "A route to technical project work, infrastructure, and site-based careers.",
+    "relatedCourses": ["Bachelor of Engineering", "Diploma in Civil Engineering"],
+    "skills": ["Technical drawing", "Measurement", "Project awareness"]
+  }
+]

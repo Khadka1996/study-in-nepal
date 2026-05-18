@@ -1,0 +1,7 @@
+{
+  "/page": "app/page.js",
+  "/about/page": "app/about/page.js",
+  "/booking/page": "app/booking/page.js",
+  "/study-info/page": "app/study-info/page.js",
+  "/why-study-nepal/page": "app/why-study-nepal/page.js"
+}

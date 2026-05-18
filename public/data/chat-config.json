@@ -1,0 +1,7 @@
+{
+  "enabled": true,
+  "phoneNumber": "9779800000000",
+  "defaultMessage": "Hello, I need help studying abroad in Nepal.",
+  "welcomeMessage": "Hi, I'm Study Abroad Assistant!",
+  "redirect_triggers": ["consultation", "book", "whatsapp", "connect"]
+}

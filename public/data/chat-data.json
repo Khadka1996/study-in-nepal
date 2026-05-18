@@ -1,0 +1,24 @@
+{
+  "responses": {
+    "greeting": ["Hello! How can I help you today?", "Hi there — how can I assist with your study plans?"],
+    "hello": ["Hi! I'm here to help."],
+    "thank_you": ["You're welcome!", "Happy to help!"],
+    "goodbye": ["Goodbye! Best of luck.", "Talk soon — take care!"],
+    "default": ["Thanks — we'll follow up on \"{query}\".", "I can help with that. Would you like to speak with a counselor?"]
+  },
+  "keywords": {
+    "services": ["service","services","offer","offerings"],
+    "countries": ["country","countries","where","which country"],
+    "tests": ["ielts","toefl","test","exam"],
+    "fees": ["fee","fees","cost","price"],
+    "contact": ["phone","address","contact","email"],
+    "consultation": ["consultation","book","appointment","counselor"]
+  },
+  "small_talk": {
+    "how_are_you": ["I'm doing great — ready to help!"],
+    "who_are_you": ["I'm the Study Abroad Assistant."],
+    "what_can_you_d": ["I can help with university options, fees, and booking a consultation."],
+    "jokes": ["Why did the student bring a ladder to class? Because they were going to high school!"]
+  },
+  "redirect_triggers": ["consultation","book","whatsapp","connect"]
+}

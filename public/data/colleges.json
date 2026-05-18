@@ -1,0 +1,58 @@
+[
+  {
+    "name": "St. Xavier's College",
+    "city": "Kathmandu",
+    "description": "A highly regarded college with strong management, science, and humanities offerings.",
+    "university": "Tribhuvan University",
+    "popularCourses": ["Management", "Science", "Humanities"]
+  },
+  {
+    "name": "Thames International College",
+    "city": "Kathmandu",
+    "description": "Known for business and social science programs with a modern learning environment.",
+    "university": "Tribhuvan University",
+    "popularCourses": ["Business Studies", "Social Work", "Mass Communication"]
+  },
+  {
+    "name": "Nepal College of Information Technology",
+    "city": "Lalitpur",
+    "description": "A specialist college with a strong reputation in computer science and engineering education.",
+    "university": "Pokhara University",
+    "popularCourses": ["Computer Engineering", "Software Engineering", "BSc CSIT"]
+  },
+  {
+    "name": "Ace Institute of Management",
+    "city": "Kathmandu",
+    "description": "A management-focused college with a practical learning style and industry links.",
+    "university": "Pokhara University",
+    "popularCourses": ["BBA", "MBA", "Hotel Management"]
+  },
+  {
+    "name": "Orchid International College",
+    "city": "Kathmandu",
+    "description": "A broad academic college with strong business and IT-related pathways.",
+    "university": "Tribhuvan University",
+    "popularCourses": ["BBS", "BCA", "BBM"]
+  },
+  {
+    "name": "King's College",
+    "city": "Kathmandu",
+    "description": "A student-centered college with business, entrepreneurship, and liberal arts offerings.",
+    "university": "Westcliff University affiliate / local programs vary",
+    "popularCourses": ["Business", "Entrepreneurship", "Liberal Arts"]
+  },
+  {
+    "name": "Kathmandu Model College",
+    "city": "Kathmandu",
+    "description": "A popular college with management, science, and humanities options.",
+    "university": "Tribhuvan University",
+    "popularCourses": ["Management", "Science", "Humanities"]
+  },
+  {
+    "name": "Apex College",
+    "city": "Kathmandu",
+    "description": "Known for management education and practical business-oriented learning.",
+    "university": "Pokhara University",
+    "popularCourses": ["BBA", "BBM", "MBA"]
+  }
+]

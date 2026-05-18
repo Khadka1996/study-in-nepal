@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Tribhuvan University",
+    "city": "Kathmandu",
+    "province": "Bagmati",
+    "description": "Nepal's oldest and largest public university with a broad academic network across the country.",
+    "website": "https://tu.edu.np/",
+    "popularCourses": ["Business", "Education", "Humanities", "Science", "Management"]
+  },
+  {
+    "name": "Kathmandu University",
+    "city": "Dhulikhel",
+    "province": "Bagmati",
+    "description": "A leading private university known for a strong academic reputation, research focus, and modern campus setting.",
+    "website": "https://ku.edu.np/",
+    "popularCourses": ["Engineering", "Management", "Medicine", "Science", "Arts"]
+  },
+  {
+    "name": "Pokhara University",
+    "city": "Pokhara",
+    "province": "Gandaki",
+    "description": "A growing university offering professional programs with an accessible city environment.",
+    "website": "https://pu.edu.np/",
+    "popularCourses": ["Management", "Hotel Management", "Pharmacy", "IT", "Engineering"]
+  },
+  {
+    "name": "Purbanchal University",
+    "city": "Biratnagar",
+    "province": "Koshi",
+    "description": "A public university with a diverse range of affiliated programs and regional reach.",
+    "website": "https://pu.edu.np/",
+    "popularCourses": ["Medicine", "Engineering", "Management", "Law", "Education"]
+  },
+  {
+    "name": "Nepal Open University",
+    "city": "Lalitpur",
+    "province": "Bagmati",
+    "description": "A flexible learning university designed for distance and open education pathways.",
+    "website": "https://nou.edu.np/",
+    "popularCourses": ["Education", "Management", "ICT", "Social Sciences"]
+  },
+  {
+    "name": "Mid-West University",
+    "city": "Birendranagar",
+    "province": "Karnali",
+    "description": "A public university supporting regional higher education and professional development.",
+    "website": "https://mu.edu.np/",
+    "popularCourses": ["Humanities", "Management", "Education", "Agriculture"]
+  },
+  {
+    "name": "Far-Western University",
+    "city": "Mahendranagar",
+    "province": "Sudurpashchim",
+    "description": "A public university serving western Nepal with expanding academic programs.",
+    "website": "https://fwu.edu.np/",
+    "popularCourses": ["Science", "Management", "Education", "Arts"]
+  },
+  {
+    "name": "Lumbini Buddhist University",
+    "city": "Lumbini",
+    "province": "Lumbini",
+    "description": "A specialized university with strengths in Buddhist studies, humanities, and cultural subjects.",
+    "website": "https://lbu.edu.np/",
+    "popularCourses": ["Buddhist Studies", "Humanities", "Tourism", "Language Studies"]
+  },
+  {
+    "name": "Agriculture and Forestry University",
+    "city": "Rampur",
+    "province": "Lumbini",
+    "description": "A specialized university focused on agricultural science, veterinary studies, and forestry.",
+    "website": "https://afu.edu.np/",
+    "popularCourses": ["Agriculture", "Forestry", "Veterinary Science", "Food Technology"]
+  },
+  {
+    "name": "Nepal Sanskrit University",
+    "city": "Dang",
+    "province": "Lumbini",
+    "description": "A public university known for Sanskrit, traditional studies, and cultural disciplines.",
+    "website": "https://nsu.edu.np/",
+    "popularCourses": ["Sanskrit", "Philosophy", "Linguistics", "Cultural Studies"]
+  }
+]

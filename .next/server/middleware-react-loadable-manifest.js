@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST="{\"components/home/DeferredStudyPathways.tsx -> ./StudyPathways\":{\"id\":\"components/home/DeferredStudyPathways.tsx -> ./StudyPathways\",\"files\":[\"static/chunks/_app-pages-browser_components_home_StudyPathways_tsx.js\"]}}"
