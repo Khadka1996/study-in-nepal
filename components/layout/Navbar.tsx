@@ -31,6 +31,15 @@ export default function Navbar(): JSX.Element {
     setIsProgramsOpen(false)
   }
 
+  const handleMobileNavigate = (href: string) => {
+    // ensure menus close immediately and perform a hard navigation on mobile
+    setIsMenuOpen(false)
+    setIsProgramsOpen(false)
+    if (typeof window !== 'undefined') {
+      window.location.href = href
+    }
+  }
+
   useEffect(() => {
     const onResize = () => {
       setIsMobile(window.innerWidth < 1280)
@@ -71,7 +80,7 @@ export default function Navbar(): JSX.Element {
   }, [isProgramsOpen])
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[rgba(200,16,46,0.12)] bg-white">
+    <header className="sticky top-0 z-[9999] border-b border-[rgba(200,16,46,0.12)] bg-white">
       <nav className="relative mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <div className="flex items-center gap-6">
           <Link href="/" className="group flex items-center gap-3 font-semibold text-[var(--color-dark)]">
@@ -123,7 +132,7 @@ export default function Navbar(): JSX.Element {
               {isProgramsOpen && (
                 <div
                   ref={dropdownRef}
-                  className="absolute left-1/2 top-full z-50 mt-3 w-[min(72rem,calc(100vw-2rem))] -translate-x-1/2 overflow-hidden rounded-[1.75rem] border border-[rgba(200,16,46,0.16)] bg-white shadow-[0_24px_60px_rgba(8,26,58,0.16)]"
+                  className="absolute left-1/2 top-full z-[9999] mt-3 w-[min(72rem,calc(100vw-2rem))] -translate-x-1/2 overflow-hidden rounded-[1.75rem] border border-[rgba(200,16,46,0.16)] bg-white shadow-[0_24px_60px_rgba(8,26,58,0.16)]"
                   onMouseLeave={() => {
                     if (!isMobile) setIsProgramsOpen(false)
                   }}
@@ -256,21 +265,27 @@ export default function Navbar(): JSX.Element {
       {isMenuOpen && (
         <div className="border-t border-[rgba(200,16,46,0.14)] bg-white xl:hidden">
           <div className="mx-auto max-h-[calc(100dvh-5rem)] max-w-7xl overflow-y-auto overscroll-contain px-4 py-4 touch-pan-y sm:px-6 lg:px-8">
-            <Link
+            <a
               href="/"
-              onClick={closeMenus}
+              onClick={(e) => {
+                e.preventDefault()
+                handleMobileNavigate('/')
+              }}
               className="block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-[rgba(15,42,95,0.06)]"
             >
               Home
-            </Link>
+            </a>
 
-            <Link
+            <a
               href="/why-study-nepal"
-              onClick={closeMenus}
+              onClick={(e) => {
+                e.preventDefault()
+                handleMobileNavigate('/why-study-nepal')
+              }}
               className="mt-2 block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-[rgba(15,42,95,0.06)]"
             >
               Why Study in Nepal
-            </Link>
+            </a>
 
             <button
               onClick={() => setIsProgramsOpen((v) => !v)}
@@ -286,50 +301,65 @@ export default function Navbar(): JSX.Element {
             {isProgramsOpen && (
               <div className="mt-3 space-y-2 rounded-[1.5rem] border border-[rgba(15,42,95,0.08)] bg-[rgba(15,42,95,0.02)] p-3">
                 {studyLinks.map((item) => (
-                  <Link
+                  <a
                     key={item.label}
                     href={item.href}
-                    onClick={closeMenus}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      handleMobileNavigate(item.href)
+                    }}
                     className="block rounded-2xl px-4 py-3 text-sm font-medium text-[var(--color-dark)] transition hover:bg-white"
                   >
                     <span className="block">{item.label}</span>
                     <span className="mt-1 block text-xs font-normal text-slate-600">{item.description}</span>
-                  </Link>
+                  </a>
                 ))}
               </div>
             )}
 
-            <Link
+            <a
               href="/booking"
-              onClick={closeMenus}
+              onClick={(e) => {
+                e.preventDefault()
+                handleMobileNavigate('/booking')
+              }}
               className="mt-2 block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-[rgba(200,16,46,0.06)]"
             >
               Student Inquiry
-            </Link>
+            </a>
 
-            <Link
+            <a
               href="/booking"
-              onClick={closeMenus}
+              onClick={(e) => {
+                e.preventDefault()
+                handleMobileNavigate('/booking')
+              }}
               className="mt-2 block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-[rgba(200,16,46,0.06)]"
             >
               Institutional Inquiry
-            </Link>
+            </a>
 
-            <Link
+            <a
               href="/about"
-              onClick={closeMenus}
+              onClick={(e) => {
+                e.preventDefault()
+                handleMobileNavigate('/about')
+              }}
               className="mt-2 block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-100"
             >
               About Us
-            </Link>
+            </a>
 
-            <Link
+            <a
               href="/booking"
-              onClick={closeMenus}
+              onClick={(e) => {
+                e.preventDefault()
+                handleMobileNavigate('/booking')
+              }}
               className="mt-4 block rounded-2xl bg-[var(--color-secondary)] px-4 py-3 text-center font-medium text-white"
             >
               Register Now
-            </Link>
+            </a>
           </div>
         </div>
       )}
