@@ -1,18 +1,19 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import type { SVGProps } from 'react'
 
-function IconSocialMobility(): JSX.Element {
+function IconSocialMobility(props: SVGProps<SVGSVGElement>): JSX.Element {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M7 18v-2.5a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3V18" />
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M9 9.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM15 9.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
     </svg>
   )
 }
 
-function IconInstitutionalStrength(): JSX.Element {
+function IconInstitutionalStrength(props: SVGProps<SVGSVGElement>): JSX.Element {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4 10.5 12 6l8 4.5" />
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M6.5 10.5V18m11-7.5V18" />
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4.75 18h14.5M9 10.5V18m6-7.5V18" />
@@ -20,9 +21,9 @@ function IconInstitutionalStrength(): JSX.Element {
   )
 }
 
-function IconCulturalDiplomacy(): JSX.Element {
+function IconCulturalDiplomacy(props: SVGProps<SVGSVGElement>): JSX.Element {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 3.5a8.5 8.5 0 1 0 8.5 8.5A8.5 8.5 0 0 0 12 3.5Z" />
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M3.6 12h16.8" />
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 3.5c2.6 2.4 4 5.1 4 8.5s-1.4 6.1-4 8.5c-2.6-2.4-4-5.1-4-8.5s1.4-6.1 4-8.5Z" />
@@ -30,9 +31,9 @@ function IconCulturalDiplomacy(): JSX.Element {
   )
 }
 
-function IconEconomicGrowth(): JSX.Element {
+function IconEconomicGrowth(props: SVGProps<SVGSVGElement>): JSX.Element {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4 18h16" />
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M6.5 15.5 10 12l3 3 4.5-5.5" />
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M16.5 9H18v1.5" />
