@@ -54,19 +54,19 @@ export const homeUniversities: HomeUniversityCard[] = [
     name: 'Kathmandu University',
     location: 'Dhulikhel',
     description: 'Recognized for strong academic planning, research culture, and a premium campus experience.',
-    imageSrc: '/images/university-kathmandu.svg',
+    imageSrc: '/images/ku-logo.jpg',
   },
   {
     name: 'Tribhuvan University',
     location: 'Kathmandu',
     description: 'Broad program coverage with a long academic footprint and wide student familiarity.',
-    imageSrc: '/images/university-tribhuvan.svg',
+    imageSrc: '/images/tu-logo.jpg',
   },
   {
     name: 'Pokhara University',
     location: 'Pokhara',
     description: 'A practical choice for students looking for modern programs and an accessible city setting.',
-    imageSrc: '/images/university-pokhara.svg',
+    imageSrc: '/images/pokhara-logo.png',
   },
 ]
 

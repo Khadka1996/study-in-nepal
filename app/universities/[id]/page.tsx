@@ -2,22 +2,36 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { universitiesMenuData } from '@/lib/data/universities-menu'
+import { buildCollegeWhatsAppMessage, buildWhatsAppLink } from '@/lib/whatsapp'
+import universityColleges from '@/lib/data/university-colleges'
+import universityFAQs from '@/lib/data/university-faqs'
 
 export const dynamic = 'force-static'
 
 type University = (typeof universitiesMenuData)[number]
 
-const universityLogos: Partial<Record<string, string>> = {
-  tribhuvan: '/images/university-tribhuvan.svg',
-  kathmandu: '/images/university-kathmandu.svg',
-  pokhara: '/images/university-pokhara.svg',
-}
-
 const affiliatedColleges: Record<string, Array<{ name: string; location: string; note: string }>> = {
   tribhuvan: [
     { name: 'Maharajgunj Medical Campus', location: 'Kathmandu', note: 'Medical education and clinical training' },
+    { name: 'Institute of Medicine', location: 'Kathmandu', note: 'Health sciences and professional medical study' },
     { name: 'Pulchowk Campus', location: 'Lalitpur', note: 'Engineering and applied sciences' },
+    { name: 'Amrit Science Campus', location: 'Kathmandu', note: 'Science and laboratory-based programs' },
+    { name: 'Tri-Chandra Multiple Campus', location: 'Kathmandu', note: 'One of the oldest government campuses in Nepal' },
     { name: 'Ratna Rajyalaxmi Campus', location: 'Kathmandu', note: 'Humanities, management, and social sciences' },
+    { name: 'Padma Kanya Multiple Campus', location: 'Kathmandu', note: 'Women-focused higher education and liberal studies' },
+    { name: 'Nepal Commerce Campus', location: 'Kathmandu', note: 'Management, commerce, and business programs' },
+    { name: 'Public Youth Campus', location: 'Kathmandu', note: 'General academic pathways and public education' },
+    { name: 'Bhaktapur Multiple Campus', location: 'Bhaktapur', note: 'Multidisciplinary undergraduate and graduate study' },
+    { name: 'Prithvi Narayan Campus', location: 'Pokhara', note: 'Large public campus with broad academic offerings' },
+    { name: 'Mahendra Ratna Campus', location: 'Kathmandu', note: 'Education and teacher preparation programs' },
+    { name: 'Shanker Dev Campus', location: 'Kathmandu', note: 'Economics, management, and commerce studies' },
+    { name: 'Ratna Rajya Laxmi Campus', location: 'Kathmandu', note: 'Humanities and social science programs' },
+    { name: 'Thakur Ram Multiple Campus', location: 'Birgunj', note: 'Regional public campus with varied programs' },
+    { name: 'Butwal Multiple Campus', location: 'Butwal', note: 'West region public higher education hub' },
+    { name: 'Mahendra Multiple Campus', location: 'Nepalgunj', note: 'Far-west and mid-west academic support' },
+    { name: 'Tansen Multiple Campus', location: 'Palpa', note: 'Regional government campus with broad studies' },
+    { name: 'Mahendra Morang Adarsha Multiple Campus', location: 'Biratnagar', note: 'Established public campus in the east' },
+    { name: 'Saraswoti Multiple Campus', location: 'Lalitpur', note: 'Liberal studies and campus-based learning' },
   ],
   kathmandu: [
     { name: 'School of Engineering', location: 'Dhulikhel', note: 'Core engineering and technology programs' },
@@ -90,7 +104,7 @@ export function generateMetadata({ params }: { params: { id: string } }): Metada
     openGraph: {
       title: `${university.name} | Study in Nepal`,
       description: university.description,
-      images: [university.image],
+      images: university.logo ? [university.logo] : undefined,
     },
     alternates: {
       canonical: `https://studyinnepal.com/universities/${university.id}`,
@@ -105,11 +119,12 @@ export default function UniversityPage({ params }: { params: { id: string } }): 
     notFound()
   }
 
-  const logoSrc = universityLogos[university.id]
-  const colleges = affiliatedColleges[university.id] ?? []
+  const logoSrc = university.logo
+  const colleges = universityColleges[university.id] ?? affiliatedColleges[university.id] ?? []
+  const faqs = universityFAQs[university.id] ?? []
 
   return (
-    <main className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+    <main className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
       <section className="overflow-hidden rounded-[2rem] border border-[var(--color-light)] bg-white shadow-soft">
         <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="bg-[var(--color-light)] px-6 py-10 sm:px-10 lg:px-12 lg:py-14">
@@ -170,7 +185,7 @@ export default function UniversityPage({ params }: { params: { id: string } }): 
                   {logoSrc ? (
                     <Image
                       src={logoSrc}
-                      alt={`${university.name} building or campus mark`}
+                      alt={`${university.name} logo`}
                       width={320}
                       height={180}
                       className="h-44 w-full object-contain"
@@ -195,10 +210,28 @@ export default function UniversityPage({ params }: { params: { id: string } }): 
           </div>
         </div>
 
-        <div className="border-t border-[var(--color-light)] bg-white px-6 py-10 sm:px-10 lg:px-12">
+        {faqs.length > 0 && (
+          <div className="border-t border-[var(--color-light)] bg-white px-6 py-10 sm:px-10 lg:px-12">
+            <div className="max-w-4xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">Frequently asked questions</p>
+              <h2 className="mt-3 text-2xl font-semibold text-[var(--color-dark)]">FAQs about {university.name}</h2>
+
+              <div className="mt-6 space-y-4">
+                {faqs.map((faq) => (
+                  <div key={faq.question} className="rounded-lg border border-[var(--color-light)] bg-white p-4">
+                    <p className="font-semibold text-[var(--color-dark)]">{faq.question}</p>
+                    <p className="mt-2 text-sm text-slate-700">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div id="colleges" className="border-t border-[var(--color-light)] bg-white px-6 py-10 sm:px-10 lg:px-12">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">Affiliated colleges</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">Colleges</p>
               <h2 className="mt-3 text-2xl font-semibold text-[var(--color-dark)]">Colleges connected to {university.name}</h2>
             </div>
             <p className="max-w-2xl text-sm leading-6 text-slate-600">
@@ -206,17 +239,27 @@ export default function UniversityPage({ params }: { params: { id: string } }): 
             </p>
           </div>
 
-          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-8 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             {colleges.map((college) => (
-              <article key={college.name} className="rounded-3xl border border-[var(--color-light)] bg-[var(--color-light)]/50 p-5">
+              <article key={college.name} className="rounded-3xl border border-[var(--color-light)] bg-[var(--color-light)]/50 p-6 min-h-[220px]">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <h3 className="text-lg font-semibold text-[var(--color-dark)]">{college.name}</h3>
-                    <p className="mt-1 text-sm text-slate-600">{college.location}</p>
+                    {college.location && <p className="mt-1 text-sm text-slate-600">{college.location}</p>}
                   </div>
                   <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-primary)]">Affiliated</span>
                 </div>
-                <p className="mt-4 text-sm leading-6 text-slate-700">{college.note}</p>
+                {college.note && <p className="mt-4 text-sm leading-6 text-slate-700">{college.note}</p>}
+                <div className="mt-5 flex items-center gap-3">
+                  <a
+                    href={buildWhatsAppLink(buildCollegeWhatsAppMessage(college.name, university.name))}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex rounded-full bg-[var(--color-primary)] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--color-dark)] focus-ring"
+                  >
+                    Inquiry
+                  </a>
+                </div>
               </article>
             ))}
           </div>

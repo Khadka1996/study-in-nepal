@@ -18,7 +18,7 @@ export const dynamic = 'force-static'
 
 export default function CoursesPage(): JSX.Element {
   return (
-    <main className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+    <main className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
       <section className="rounded-[2rem] border border-[var(--color-light)] bg-white p-8 shadow-soft lg:p-12">
         <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">Courses</p>
         <h1 className="mt-4 text-4xl font-semibold text-[var(--color-dark)]">Track courses by outcome, not just by name.</h1>

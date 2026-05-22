@@ -19,7 +19,7 @@ export const dynamic = 'force-static'
 
 export default function ContactPage(): JSX.Element {
   return (
-    <main className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+    <main className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
       <section className="grid gap-8 rounded-[2rem] border border-[var(--color-light)] bg-white p-8 shadow-soft lg:grid-cols-[1.05fr_0.95fr] lg:p-12">
         <div>
         <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">Contact</p>

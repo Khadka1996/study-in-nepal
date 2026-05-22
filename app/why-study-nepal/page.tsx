@@ -89,7 +89,7 @@ export const dynamic = 'force-static'
 
 export default function WhyStudyNepalPage(): JSX.Element {
   return (
-    <main className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+    <main className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
       <section className="overflow-hidden rounded-[2rem] border border-[rgba(15,42,95,0.12)] bg-[linear-gradient(140deg,#081a3a_0%,#0f2a5f_50%,#143b7c_100%)] p-7 text-white shadow-[0_24px_70px_rgba(8,26,58,0.2)] sm:p-10">
         <p className="text-xs font-semibold uppercase tracking-[0.32em] text-white/70">Why Study in Nepal</p>
         <h1 className="mt-4 max-w-3xl text-3xl font-semibold leading-tight sm:text-5xl">Experience top-notch education, vibrant culture, and limitless possibilities in one of South Asia\'s fastest-growing education destinations.</h1>
