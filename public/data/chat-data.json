@@ -1,10 +1,16 @@
 {
   "responses": {
-    "greeting": ["Hello! How can I help you today?", "Hi there — how can I assist with your study plans?"],
-    "hello": ["Hi! I'm here to help."],
-    "thank_you": ["You're welcome!", "Happy to help!"],
-    "goodbye": ["Goodbye! Best of luck.", "Talk soon — take care!"],
-    "default": ["Thanks — we'll follow up on \"{query}\".", "I can help with that. Would you like to speak with a counselor?"]
+    "greeting": ["Hello! I can help with universities, colleges, courses, fees, contact details, and consultation booking.", "Hi there — ask me about study options, application help, or how to book a consultation."],
+    "hello": ["Hi! I can help with study options, admissions, and consultation booking."],
+    "thank_you": ["You're welcome!", "Happy to help — ask me anything about studying in Nepal."],
+    "goodbye": ["Goodbye! Best of luck with your study plans.", "Talk soon — take care."],
+    "services": ["We help with university selection, course planning, admissions support, consultation booking, and contact follow-up.", "The site focuses on study guidance, institutional inquiry, and helping students compare universities, colleges, and courses."],
+    "countries": ["We support international students interested in studying in Nepal. The site highlights students from Bangladesh, India, Nigeria, and Kenya, but no fixed country restriction is listed.", "The portal is for international students who want guidance on studying in Nepal, including South Asia and beyond."],
+    "tests": ["Many programs are English-medium, especially at larger universities and private colleges. For IELTS or other entry tests, it depends on the institution and course.", "Test requirements vary by program, so I recommend checking the university or booking a consultation for exact guidance."],
+    "fees": ["Fees depend on the institution and course, but Nepal is generally more affordable than many study destinations. Budget for tuition, living costs, transport, and documents.", "The site describes Nepal as a cost-effective study destination. Exact fees vary, so the booking or contact page is the best place to confirm your case."],
+    "contact": ["Phone: +977 9841338194. Address: New Baneshwor, Kathmandu, Nepal. WhatsApp: +977 9823153502.", "Use the contact page for detailed admission support, or WhatsApp for a faster follow-up during Nepal business hours."],
+    "consultation": ["You can book a consultation on the booking page. The site says it generates a booking reference, sends a confirmation email, and follows up with consultation details.", "If you want a free consultation, use the booking page and I can help you with the next step."],
+    "default": ["Thanks — I can help with universities, colleges, courses, fees, contact details, and consultation booking. Which one would you like?", "I can help with that. Try asking about a university, course, fee, contact number, or booking a consultation."]
   },
   "keywords": {
     "services": ["service","services","offer","offerings"],

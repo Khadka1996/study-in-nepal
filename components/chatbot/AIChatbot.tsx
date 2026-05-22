@@ -41,6 +41,27 @@ export default function AIChatbot(): JSX.Element | null {
   const chatContainerRef = useRef<HTMLDivElement | null>(null)
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
+  const resolveChatResponse = (response: any): { text: string; followUp: string | null } | null => {
+    if (!response) return null
+
+    if (Array.isArray(response)) {
+      if (response.length === 0) return null
+      return resolveChatResponse(response[Math.floor(Math.random() * response.length)])
+    }
+
+    if (typeof response === 'string') {
+      return { text: response, followUp: null }
+    }
+
+    if (typeof response === 'object') {
+      const text = response.response || response.text || ''
+      if (!text) return null
+      return { text, followUp: response.followUp || null }
+    }
+
+    return null
+  }
+
   useEffect(() => {
     const path = typeof window !== 'undefined' ? window.location.pathname : ''
     setIsDashboard(path.startsWith('/dashboard'))
@@ -132,20 +153,16 @@ export default function AIChatbot(): JSX.Element | null {
 
     if (chatData?.small_talk) {
       if (lowerMessage.includes('how are you') || lowerMessage.includes('how do you do')) {
-        const responses = chatData.small_talk.how_are_you || []
-        return responses[Math.floor(Math.random() * (responses.length || 1))]
+        return resolveChatResponse(chatData.small_talk.how_are_you || [])
       }
       if (lowerMessage.includes('who are you') || lowerMessage.includes('what are you')) {
-        const responses = chatData.small_talk.who_are_you || []
-        return responses[Math.floor(Math.random() * (responses.length || 1))]
+        return resolveChatResponse(chatData.small_talk.who_are_you || [])
       }
       if (lowerMessage.includes('what can you do') || lowerMessage.includes('what do you do')) {
-        const responses = chatData.small_talk.what_can_you_d || []
-        return responses[Math.floor(Math.random() * (responses.length || 1))]
+        return resolveChatResponse(chatData.small_talk.what_can_you_d || [])
       }
       if (lowerMessage.includes('joke') || lowerMessage.includes('funny')) {
-        const responses = chatData.small_talk.jokes || []
-        return responses[Math.floor(Math.random() * (responses.length || 1))]
+        return resolveChatResponse(chatData.small_talk.jokes || [])
       }
     }
 
@@ -160,23 +177,20 @@ export default function AIChatbot(): JSX.Element | null {
     if (smallTalkResponse) return smallTalkResponse
 
     if (chatData.keywords?.thank_you?.some((keyword: string) => lowerMessage.includes(keyword))) {
-      const thankYouResponses = chatData.responses?.thank_you || []
-      return thankYouResponses[Math.floor(Math.random() * (thankYouResponses.length || 1))]
+      return resolveChatResponse(chatData.responses?.thank_you || [])
     }
 
     if (chatData.keywords?.goodbye?.some((keyword: string) => lowerMessage.includes(keyword))) {
-      const goodbyeResponses = chatData.responses?.goodbye || []
-      return goodbyeResponses[Math.floor(Math.random() * (goodbyeResponses.length || 1))]
+      return resolveChatResponse(chatData.responses?.goodbye || [])
     }
 
     if (chatData.keywords?.hello?.some((keyword: string) => lowerMessage === keyword || lowerMessage === `${keyword} there`)) {
-      const helloResponses = chatData.responses?.hello || []
-      return helloResponses[Math.floor(Math.random() * (helloResponses.length || 1))]
+      return resolveChatResponse(chatData.responses?.hello || [])
     }
 
     for (const [category, keywords] of Object.entries(chatData.keywords || {})) {
       if ((keywords as string[]).some((keyword) => lowerMessage.includes(keyword))) {
-        return chatData.responses?.[category]
+        return resolveChatResponse(chatData.responses?.[category])
       }
     }
 
@@ -207,17 +221,18 @@ export default function AIChatbot(): JSX.Element | null {
           action: 'redirect'
         }
       } else if (matchingResponse) {
-        if (typeof matchingResponse === 'string') {
-          botResponse = { id: messages.length + 1, text: matchingResponse, sender: 'bot', timestamp: new Date() }
-        } else {
-          const responseText = matchingResponse.response || matchingResponse
-          botResponse = { id: messages.length + 1, text: responseText, sender: 'bot', timestamp: new Date(), followUp: matchingResponse.followUp || null }
+        botResponse = {
+          id: messages.length + 1,
+          text: matchingResponse.text,
+          sender: 'bot',
+          timestamp: new Date(),
+          followUp: matchingResponse.followUp,
         }
       } else {
         const defaultResponses = chatData.responses?.default || []
-        const randomDefault = defaultResponses[Math.floor(Math.random() * (defaultResponses.length || 1))] || `Thanks — we'll follow up on "${userMessage}".`
-        const formattedResponse = (randomDefault as string).replace('{query}', userMessage)
-        botResponse = { id: messages.length + 1, text: formattedResponse, sender: 'bot', timestamp: new Date() }
+        const randomDefault = resolveChatResponse(defaultResponses) || { text: `Thanks — we'll follow up on "${userMessage}".`, followUp: null }
+        const formattedResponse = randomDefault.text.replace('{query}', userMessage)
+        botResponse = { id: messages.length + 1, text: formattedResponse, sender: 'bot', timestamp: new Date(), followUp: randomDefault.followUp }
       }
 
       setMessages((prev) => [...prev, botResponse])
