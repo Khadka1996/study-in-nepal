@@ -1,45 +1,127 @@
 {
   "pages": {
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
-    ],
-    "/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
-    ],
     "/not-found": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/not-found.js"
+      "static/chunks/webpack-f06c52eeb2bd1038.js",
+      "static/chunks/fd9d1056-7a031ba6dabf4ec3.js",
+      "static/chunks/117-06833c18bd64ef2e.js",
+      "static/chunks/main-app-dee3eb8578c391ce.js",
+      "static/chunks/972-a933c77aab47160a.js",
+      "static/chunks/app/not-found-7213b4fd01ee5855.js"
     ],
     "/_not-found/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/chunks/webpack-f06c52eeb2bd1038.js",
+      "static/chunks/fd9d1056-7a031ba6dabf4ec3.js",
+      "static/chunks/117-06833c18bd64ef2e.js",
+      "static/chunks/main-app-dee3eb8578c391ce.js",
+      "static/chunks/app/_not-found/page-6ceeae151e0a191b.js"
     ],
-    "/study-info/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/study-info/page.js"
-    ],
-    "/booking/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/booking/page.js"
+    "/layout": [
+      "static/chunks/webpack-f06c52eeb2bd1038.js",
+      "static/chunks/fd9d1056-7a031ba6dabf4ec3.js",
+      "static/chunks/117-06833c18bd64ef2e.js",
+      "static/chunks/main-app-dee3eb8578c391ce.js",
+      "static/css/7ab0473f922093dd.css",
+      "static/chunks/972-a933c77aab47160a.js",
+      "static/chunks/884-555ad8079030fdf4.js",
+      "static/chunks/app/layout-ad20df3d18b686a3.js"
     ],
     "/about/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/about/page.js"
+      "static/chunks/webpack-f06c52eeb2bd1038.js",
+      "static/chunks/fd9d1056-7a031ba6dabf4ec3.js",
+      "static/chunks/117-06833c18bd64ef2e.js",
+      "static/chunks/main-app-dee3eb8578c391ce.js",
+      "static/chunks/972-a933c77aab47160a.js",
+      "static/chunks/app/about/page-2df37e60d6210108.js"
+    ],
+    "/contact/page": [
+      "static/chunks/webpack-f06c52eeb2bd1038.js",
+      "static/chunks/fd9d1056-7a031ba6dabf4ec3.js",
+      "static/chunks/117-06833c18bd64ef2e.js",
+      "static/chunks/main-app-dee3eb8578c391ce.js",
+      "static/chunks/486-4fce812e979eaf16.js",
+      "static/chunks/app/contact/page-214af1ec3440f98c.js"
+    ],
+    "/courses/page": [
+      "static/chunks/webpack-f06c52eeb2bd1038.js",
+      "static/chunks/fd9d1056-7a031ba6dabf4ec3.js",
+      "static/chunks/117-06833c18bd64ef2e.js",
+      "static/chunks/main-app-dee3eb8578c391ce.js",
+      "static/chunks/972-a933c77aab47160a.js",
+      "static/chunks/app/courses/page-8a4f111f4728b6e1.js"
+    ],
+    "/study-info/page": [
+      "static/chunks/webpack-f06c52eeb2bd1038.js",
+      "static/chunks/fd9d1056-7a031ba6dabf4ec3.js",
+      "static/chunks/117-06833c18bd64ef2e.js",
+      "static/chunks/main-app-dee3eb8578c391ce.js",
+      "static/chunks/app/study-info/page-ca05605d9e772f15.js"
+    ],
+    "/testimonials/page": [
+      "static/chunks/webpack-f06c52eeb2bd1038.js",
+      "static/chunks/fd9d1056-7a031ba6dabf4ec3.js",
+      "static/chunks/117-06833c18bd64ef2e.js",
+      "static/chunks/main-app-dee3eb8578c391ce.js",
+      "static/chunks/972-a933c77aab47160a.js",
+      "static/chunks/878-0474b0a2804e6e75.js",
+      "static/chunks/app/testimonials/page-205b686acc5fff3e.js"
+    ],
+    "/colleges/page": [
+      "static/chunks/webpack-f06c52eeb2bd1038.js",
+      "static/chunks/fd9d1056-7a031ba6dabf4ec3.js",
+      "static/chunks/117-06833c18bd64ef2e.js",
+      "static/chunks/main-app-dee3eb8578c391ce.js",
+      "static/chunks/972-a933c77aab47160a.js",
+      "static/chunks/app/colleges/page-9e2a2c0f3345d170.js"
+    ],
+    "/careers/page": [
+      "static/chunks/webpack-f06c52eeb2bd1038.js",
+      "static/chunks/fd9d1056-7a031ba6dabf4ec3.js",
+      "static/chunks/117-06833c18bd64ef2e.js",
+      "static/chunks/main-app-dee3eb8578c391ce.js",
+      "static/chunks/972-a933c77aab47160a.js",
+      "static/chunks/app/careers/page-381ccc13386bc2a8.js"
+    ],
+    "/universities/[id]/page": [
+      "static/chunks/webpack-f06c52eeb2bd1038.js",
+      "static/chunks/fd9d1056-7a031ba6dabf4ec3.js",
+      "static/chunks/117-06833c18bd64ef2e.js",
+      "static/chunks/main-app-dee3eb8578c391ce.js",
+      "static/chunks/878-0474b0a2804e6e75.js",
+      "static/chunks/app/universities/[id]/page-d3c9ea2b3d455268.js"
     ],
     "/why-study-nepal/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/why-study-nepal/page.js"
+      "static/chunks/webpack-f06c52eeb2bd1038.js",
+      "static/chunks/fd9d1056-7a031ba6dabf4ec3.js",
+      "static/chunks/117-06833c18bd64ef2e.js",
+      "static/chunks/main-app-dee3eb8578c391ce.js",
+      "static/chunks/972-a933c77aab47160a.js",
+      "static/chunks/app/why-study-nepal/page-c6f2fe963148000e.js"
+    ],
+    "/booking/page": [
+      "static/chunks/webpack-f06c52eeb2bd1038.js",
+      "static/chunks/fd9d1056-7a031ba6dabf4ec3.js",
+      "static/chunks/117-06833c18bd64ef2e.js",
+      "static/chunks/main-app-dee3eb8578c391ce.js",
+      "static/chunks/486-4fce812e979eaf16.js",
+      "static/chunks/app/booking/page-eafd40e444852c36.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-f06c52eeb2bd1038.js",
+      "static/chunks/fd9d1056-7a031ba6dabf4ec3.js",
+      "static/chunks/117-06833c18bd64ef2e.js",
+      "static/chunks/main-app-dee3eb8578c391ce.js",
+      "static/chunks/972-a933c77aab47160a.js",
+      "static/chunks/878-0474b0a2804e6e75.js",
+      "static/chunks/app/page-f89d6362d2771141.js"
+    ],
+    "/universities/page": [
+      "static/chunks/webpack-f06c52eeb2bd1038.js",
+      "static/chunks/fd9d1056-7a031ba6dabf4ec3.js",
+      "static/chunks/117-06833c18bd64ef2e.js",
+      "static/chunks/main-app-dee3eb8578c391ce.js",
+      "static/chunks/972-a933c77aab47160a.js",
+      "static/chunks/878-0474b0a2804e6e75.js",
+      "static/chunks/app/universities/page-ca31c7b76d075069.js"
     ]
   }
 }

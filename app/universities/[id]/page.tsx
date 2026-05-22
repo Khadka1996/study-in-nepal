@@ -120,6 +120,7 @@ export default function UniversityPage({ params }: { params: { id: string } }): 
   }
 
   const logoSrc = university.logo
+  const buildingSrc = (university as any).buildingImage ?? university.logo
   const colleges = universityColleges[university.id] ?? affiliatedColleges[university.id] ?? []
   const faqs = universityFAQs[university.id] ?? []
 
@@ -182,13 +183,15 @@ export default function UniversityPage({ params }: { params: { id: string } }): 
               <div className="overflow-hidden rounded-[1.75rem] border border-[var(--color-light)] bg-[linear-gradient(135deg,rgba(26,95,122,0.08),rgba(87,197,182,0.08))] p-6">
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--color-primary)]">Campus / building</p>
                 <div className="mt-5 flex items-center justify-center rounded-[1.5rem] border border-white bg-white/80 p-6">
-                  {logoSrc ? (
+                  {buildingSrc ? (
                     <Image
-                      src={logoSrc}
-                      alt={`${university.name} logo`}
-                      width={320}
-                      height={180}
-                      className="h-44 w-full object-contain"
+                      src={buildingSrc}
+                      alt={`${university.name} campus`}
+                      width={720}
+                      height={420}
+                      className="h-44 w-full object-cover rounded-md"
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                      loading="lazy"
                     />
                   ) : (
                     <div className="flex h-44 w-full items-center justify-center rounded-[1.25rem] bg-white text-center text-sm font-medium text-slate-600">

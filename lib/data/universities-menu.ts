@@ -4,6 +4,7 @@ export interface UniversityMenuItem {
   description: string
   location: string
   image: string
+  buildingImage?: string
   logo?: string
   programs: string[]
   href: string
@@ -16,6 +17,7 @@ export const universitiesMenuData: UniversityMenuItem[] = [
     description: 'The oldest and largest public university in Nepal with a wide academic network.',
     location: 'Kathmandu',
     image: '/images/tu-logo.jpg',
+    buildingImage: '/images/Renovation-and-Expansion-of-Tri-Chandra-Campus.jpg',
     logo: '/images/tu-logo.jpg',
     programs: ['MBBS', 'BBA', 'Engineering', 'Law', 'Science', 'Public Health'],
     href: '/universities/tribhuvan'
@@ -26,6 +28,7 @@ export const universitiesMenuData: UniversityMenuItem[] = [
     description: 'An autonomous university known for strong research and modern academic programs.',
     location: 'Dhulikhel',
     image: '/images/ku-logo.jpg',
+    buildingImage: '/images/tu-building.jpg',
     logo: '/images/ku-logo.jpg',
     programs: ['Engineering', 'MBA', 'Medicine', 'Architecture', 'Science', 'Computer Science'],
     href: '/universities/kathmandu'
@@ -36,6 +39,7 @@ export const universitiesMenuData: UniversityMenuItem[] = [
     description: 'A modern public university with practical programs and a growing academic profile.',
     location: 'Pokhara',
     image: '/images/pokhara-logo.png',
+    buildingImage: '/images/pokhara-university-building.gif',
     logo: '/images/pokhara-logo.png',
     programs: ['Engineering', 'Nursing', 'Management', 'BCA', 'Hotel Management', 'Computer Science'],
     href: '/universities/pokhara'
@@ -46,6 +50,7 @@ export const universitiesMenuData: UniversityMenuItem[] = [
     description: 'A major public university serving eastern Nepal with technical and professional study paths.',
     location: 'Biratnagar',
     image: '/images/purbanchal-logo.png',
+    buildingImage: '/images/purbanchal-university-building.jpg',
     logo: '/images/purbanchal-logo.png',
     programs: ['Engineering', 'Medicine', 'BBA', 'Science', 'BCA', 'Public Health'],
     href: '/universities/purbanchal'
@@ -55,8 +60,9 @@ export const universitiesMenuData: UniversityMenuItem[] = [
     name: 'Lumbini Buddhist University',
     description: 'A specialized university rooted in Buddhist heritage and higher learning.',
     location: 'Rupandehi',
-    image: '/images/lumbini%20buddhist.png',
-    logo: '/images/lumbini%20buddhist.png',
+    image: '/images/lumbini-buddhist.png',
+    buildingImage: '/images/lumbini-buddhist.png',
+    logo: '/images/lumbini-buddhist.png',
     programs: ['Buddhist Studies', 'Management', 'Arts', 'Tourism', 'Education', 'Social Science'],
     href: '/universities/lumbini'
   },
@@ -66,6 +72,7 @@ export const universitiesMenuData: UniversityMenuItem[] = [
     description: 'A public university with programs across western and mid-western Nepal.',
     location: 'Surkhet',
     image: '/images/midwestern.jpeg',
+    buildingImage: '/images/mid-west-university-mwu-building.jpg',
     logo: '/images/midwestern.jpeg',
     programs: ['Engineering', 'Education', 'BBA', 'Agriculture', 'Science', 'Management'],
     href: '/universities/midwestern'
@@ -76,6 +83,7 @@ export const universitiesMenuData: UniversityMenuItem[] = [
     description: 'Nepal’s dedicated university for Sanskrit, philosophy, and traditional scholarship.',
     location: 'Dang',
     image: '/images/hero-study-nepal.svg',
+    buildingImage: '/images/hero-study-nepal.svg',
     programs: ['Sanskrit', 'Philosophy', 'Religion', 'Literature', 'Education', 'Cultural Studies'],
     href: '/universities/nepal-sanskrit'
   },
@@ -84,8 +92,9 @@ export const universitiesMenuData: UniversityMenuItem[] = [
     name: 'Nepal Open University',
     description: 'A distance-learning university expanding access through flexible study pathways.',
     location: 'Kathmandu',
-    image: '/images/open%20university.png',
-    logo: '/images/open%20university.png',
+    image: '/images/open-university.png',
+    buildingImage: '/images/open-university.png',
+    logo: '/images/open-university.png',
     programs: ['IT', 'Management', 'Education', 'Public Policy', 'Social Science', 'Law'],
     href: '/universities/nepal-open'
   },
@@ -95,6 +104,7 @@ export const universitiesMenuData: UniversityMenuItem[] = [
     description: 'Focused on agriculture, forestry, and veterinary science education.',
     location: 'Rampur',
     image: '/images/hero-study-nepal.svg',
+    buildingImage: '/images/hero-study-nepal.svg',
     programs: ['Agriculture', 'Forestry', 'Veterinary', 'Food Science', 'Horticulture', 'Environment Science'],
     href: '/universities/agriculture-forestry'
   },
@@ -104,6 +114,7 @@ export const universitiesMenuData: UniversityMenuItem[] = [
     description: 'A public university serving the far-western region with multidisciplinary study options.',
     location: 'Dhangadhi',
     image: '/images/farwestern.jpg',
+    buildingImage: '/images/far-western-university-gate.jpg',
     logo: '/images/farwestern.jpg',
     programs: ['Engineering', 'Medicine', 'BCA', 'Education', 'Business', 'Management'],
     href: '/universities/far-western'
@@ -113,8 +124,9 @@ export const universitiesMenuData: UniversityMenuItem[] = [
     name: 'Nepal Medical College',
     description: 'A respected medical college with clinical and healthcare-focused education.',
     location: 'Kathmandu',
-    image: '/images/madan%20bhandari.png',
-    logo: '/images/madan%20bhandari.png',
+    image: '/images/madan-bhandari.png',
+    buildingImage: '/images/madan-bhandari.png',
+    logo: '/images/madan-bhandari.png',
     programs: ['MBBS', 'BNS', 'Public Health', 'Pharmacy', 'Allied Health', 'Laboratory Science'],
     href: '/universities/nepal-med'
   },

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 
 import FAQSection from '@/components/shared/FAQSection'
 import { studyInfoFaqs } from '@/lib/data/faqs'
@@ -104,6 +105,36 @@ export default function WhyStudyNepalPage(): JSX.Element {
           <Link href="/booking" className="inline-flex rounded-full border border-white/20 bg-[var(--color-secondary)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#ab0d26] focus-ring">
             Institutional Inquiry
           </Link>
+        </div>
+      </section>
+
+      <section className="mt-8 rounded-[2rem] border border-[rgba(15,42,95,0.1)] bg-white p-6 shadow-soft sm:p-8">
+        <h2 className="text-2xl font-semibold text-[var(--color-dark)] sm:text-3xl">Nepal's Academic Infrastructure</h2>
+        <p className="mt-3 text-sm leading-6 text-slate-600 max-w-3xl">A structured foundation section that feels editorial, balanced, and more premium than a stack of isolated cards. A cleaner path for students who want clarity, not clutter.</p>
+
+        <div className="mt-6 grid gap-4 md:grid-cols-2 items-start">
+          <article className="rounded-[1rem] overflow-hidden border border-[rgba(15,42,95,0.06)]">
+            <Image src="/images/Renovation-and-Expansion-of-Tri-Chandra-Campus.jpg" alt="Tri-Chandra Multiple Campus" width={900} height={540} className="w-full object-cover" />
+            <div className="p-4">
+              <h3 className="text-lg font-semibold text-[var(--color-dark)]">Tri-Chandra Multiple Campus</h3>
+              <p className="mt-2 text-sm text-slate-600">Historic campus offering humanities, social sciences and a deep academic tradition.</p>
+            </div>
+          </article>
+
+          <article className="rounded-[1rem] overflow-hidden border border-[rgba(15,42,95,0.06)]">
+            <Image src="/images/pulchowk-engineering.jpeg" alt="Pulchowk Campus" width={900} height={540} className="w-full object-cover" />
+            <div className="p-4">
+              <h3 className="text-lg font-semibold text-[var(--color-dark)]">Pulchowk Campus</h3>
+              <p className="mt-2 text-sm text-slate-600">One of Nepal's premier engineering campuses — practical, well-equipped, and industry-facing.</p>
+            </div>
+          </article>
+        </div>
+
+        <div className="mt-6">
+          <p className="text-sm text-slate-600 max-w-3xl">Nepal can offer affordability, accessible campuses, and serious academic options. The layout above keeps that story focused and easy to scan. Read study info to explore specific campuses like Ratna Rajya, Padma Kanya, and law faculties across the city.</p>
+          <div className="mt-4">
+            <Link href="/study-info" className="inline-flex rounded-full bg-[var(--color-secondary)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#ab0d26] focus-ring">Read study info</Link>
+          </div>
         </div>
       </section>
 

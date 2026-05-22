@@ -1,7 +1,17 @@
 {
-  "/page": "app/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
   "/about/page": "app/about/page.js",
-  "/booking/page": "app/booking/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/courses/page": "app/courses/page.js",
   "/study-info/page": "app/study-info/page.js",
-  "/why-study-nepal/page": "app/why-study-nepal/page.js"
+  "/testimonials/page": "app/testimonials/page.js",
+  "/colleges/page": "app/colleges/page.js",
+  "/careers/page": "app/careers/page.js",
+  "/universities/[id]/page": "app/universities/[id]/page.js",
+  "/why-study-nepal/page": "app/why-study-nepal/page.js",
+  "/booking/page": "app/booking/page.js",
+  "/page": "app/page.js",
+  "/universities/page": "app/universities/page.js"
 }

@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST="{\"components/home/DeferredStudyPathways.tsx -> ./StudyPathways\":{\"id\":\"components/home/DeferredStudyPathways.tsx -> ./StudyPathways\",\"files\":[\"static/chunks/_app-pages-browser_components_home_StudyPathways_tsx.js\"]}}"
+self.__REACT_LOADABLE_MANIFEST='{"components/home/DeferredStudyPathways.tsx -> ./StudyPathways":{"id":2929,"files":["static/chunks/929.4365dea4252dfb14.js"]}}';
