@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 
 import type { SocialLink } from '@/types'
@@ -44,85 +43,80 @@ function getSocialPath(label: SocialLink['label']): string {
 
 export default function Footer(): JSX.Element {
   return (
-    <footer className="relative overflow-hidden rounded-t-[2rem] bg-[#0067b4] text-white">
-      <Image
-        src="/images/footer-bg1.jpg"
-        alt=""
-        fill
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover object-center transform-gpu"
-      />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,103,180,0.18)_0%,rgba(0,103,180,0.5)_100%)]" />
-      <div className="absolute inset-x-0 top-0 h-1 bg-white/80" />
-
-      <div className="relative mx-auto w-full max-w-7xl px-2 py-12 sm:px-6 lg:px-8 lg:py-14">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-2xl font-semibold tracking-tight sm:text-4xl">9860540054</p>
-          <div className="mt-3 flex flex-col items-center justify-center gap-2 text-sm font-medium text-[rgba(255,255,255,0.9)] sm:flex-row sm:gap-4 sm:text-base">
-            <a href="tel:9860540054" className="transition hover:text-white">Call</a>
-            <span className="hidden text-white/30 sm:inline">•</span>
-            <a href="https://wa.me/9860540054" target="_blank" rel="noreferrer" className="transition hover:text-white">WhatsApp</a>
-            <span className="hidden text-white/30 sm:inline">•</span>
-            <a href="mailto:directorbusiness@icecollege.edu.np" className="transition hover:text-white">directorbusiness@icecollege.edu.np</a>
-          </div>
-          <p className="mt-3 text-base font-medium text-[rgba(255,255,255,0.9)] sm:text-lg">Miteripul, Mandikatar, Kathmandu, Nepal</p>
-        </div>
-
-        <div className="mt-10 rounded-[1.75rem] border border-white/10 bg-white/10 px-4 py-5 shadow-[0_20px_50px_rgba(8,26,58,0.24)] sm:px-5">
-          <div className="flex flex-col items-center justify-between gap-5 lg:flex-row lg:items-start">
-            <Link href="/" className="inline-flex items-center rounded-full bg-white px-4 py-2 text-base font-semibold text-[var(--color-primary)] shadow-sm sm:text-lg lg:self-start">
+    <footer className="border-t border-white/10 bg-[linear-gradient(180deg,#081a3a_0%,#0f2a5f_100%)] text-white">
+      <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-14">
+        <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
+          <div className="space-y-5">
+            <Link href="/" className="inline-flex items-center rounded-full border border-white/10 bg-white px-4 py-2 text-sm font-semibold text-[var(--color-primary)] shadow-[0_10px_24px_rgba(8,26,58,0.18)] transition hover:-translate-y-0.5 focus-ring">
               Study in <span className="ml-1 text-[var(--color-secondary)]">Nepal</span>
             </Link>
+            <p className="max-w-2xl text-sm leading-7 text-white/78 sm:text-base">
+              Contact us directly, explore the important pages, or check the legal information below. The footer is intentionally minimal now so the content is easier to scan.
+            </p>
 
-            <nav aria-label="Footer navigation" className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm font-medium text-white/90">
-              {quickLinks.map((link) => (
-                <Link key={link.href} href={link.href} className="transition hover:text-white">
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
+            <p className="text-sm text-white/72">Miteripul, Mandikatar, Kathmandu, Nepal</p>
+          </div>
 
-            <div className="flex items-center gap-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={social.label}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[rgba(8,26,58,0.55)] text-white transition hover:-translate-y-0.5 hover:bg-[var(--color-secondary)] focus-ring"
-                >
-                  <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden="true">
-                    <path d={getSocialPath(social.label)} />
-                  </svg>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
+            <div>
+              <div className="flex flex-wrap gap-3 text-sm font-medium text-white">
+                <a href="tel:9860540054" className="rounded-full border border-white/10 bg-[rgba(255,255,255,0.06)] px-4 py-2 shadow-[0_10px_24px_rgba(8,26,58,0.12)] transition hover:-translate-y-0.5 hover:bg-[rgba(255,255,255,0.12)] hover:text-white focus-ring">
+                  9860540054
                 </a>
-              ))}
+                <a href="mailto:directorbusiness@icecollege.edu.np" className="rounded-full border border-white/10 bg-[rgba(255,255,255,0.06)] px-4 py-2 shadow-[0_10px_24px_rgba(8,26,58,0.12)] transition hover:-translate-y-0.5 hover:bg-[rgba(255,255,255,0.12)] hover:text-white focus-ring">
+                  directorbusiness@icecollege.edu.np
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <nav aria-label="Footer navigation" className="mt-4 flex flex-wrap gap-x-4 gap-y-3 text-sm font-medium text-white/82">
+                {quickLinks.map((link) => (
+                  <Link key={link.href} href={link.href} className="transition hover:text-white focus-ring">
+                    {link.label}
+                  </Link>
+                ))}
+              </nav>
             </div>
           </div>
         </div>
 
-        <div className="mt-8 border-t border-white/10 pt-6 text-center text-[10px] leading-6 text-white/72 sm:text-xs">
-          <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
-            <span>© {new Date().getFullYear()} Study in Nepal. All rights reserved.</span>
-            <span className="text-white/30">|</span>
-            <span className="text-white/60">
-              Designed and developed by{' '}
-              <a href="https://www.intersect.com.np" target="_blank" rel="noreferrer" className="font-semibold text-[var(--color-secondary)] transition hover:text-[#ff7d92]">
-                intersectinfodevelopers
+        <div className="mt-8 flex flex-col items-center gap-4 border-t border-white/10 pt-5">
+          <div className="flex flex-wrap justify-center gap-3">
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={social.label}
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-[rgba(255,255,255,0.06)] px-4 py-2 text-sm font-medium text-white/84 shadow-[0_10px_24px_rgba(8,26,58,0.12)] transition hover:-translate-y-0.5 hover:bg-[rgba(255,255,255,0.12)] hover:text-white focus-ring"
+              >
+                <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
+                  <path d={getSocialPath(social.label)} />
+                </svg>
+                <span>{social.label}</span>
               </a>
-            </span>
-            <span className="text-white/30">|</span>
-            <nav aria-label="Legal footer navigation" className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[10px] font-medium text-white/68 sm:text-xs">
-              {legalLinks.map((link, index) => (
-                <span key={link.href} className="inline-flex items-center gap-x-2">
-                  <Link href={link.href} className="transition hover:text-white">
-                    {link.label}
-                  </Link>
-                  {index < legalLinks.length - 1 ? <span className="text-white/30">|</span> : null}
-                </span>
-              ))}
-            </nav>
+            ))}
           </div>
+
+          <nav aria-label="Legal footer navigation" className="mt-2 flex flex-wrap justify-center gap-x-3 gap-y-2 text-[11px] font-medium leading-5 text-white/72 sm:mt-3 sm:text-xs">
+            {legalLinks.map((link) => (
+              <Link key={link.href} href={link.href} className="transition hover:text-white focus-ring">
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+
+        <div className="mt-8 border-t border-white/10 pt-5 text-sm text-white/68 sm:flex sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Study in Nepal. All rights reserved.</p>
+          <p>
+            Designed and developed by{' '}
+            <a href="https://www.intersect.com.np" target="_blank" rel="noreferrer" className="font-semibold text-[var(--color-gold)] transition hover:text-white">
+              intersectinfodevelopers
+            </a>
+          </p>
         </div>
       </div>
     </footer>
