@@ -2,6 +2,19 @@
 
 import { useEffect, useRef, useState } from 'react'
 
+import { loadChatbotData } from '@/lib/chatbot/loadData'
+import { getReply } from '@/lib/chatbot/responder'
+
+type ChatSender = 'bot' | 'user'
+
+interface ChatMessage {
+  id: number
+  text: string
+  sender: ChatSender
+  timestamp: Date
+  action?: 'redirect'
+}
+
 const IconBot = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className={className} aria-hidden>
     <rect x="3" y="3" width="18" height="14" rx="3" strokeWidth="1.5" />
@@ -30,37 +43,29 @@ export default function AIChatbot(): JSX.Element | null {
   const [isMinimized, setIsMinimized] = useState(true)
   const [isTyping, setIsTyping] = useState(false)
   const [currentMessage, setCurrentMessage] = useState('')
-  const [showWelcome, setShowWelcome] = useState(false)
-  const [messages, setMessages] = useState<any[]>([])
+  const [messages, setMessages] = useState<ChatMessage[]>([])
   const [config, setConfig] = useState<any | null>(null)
-  const [chatData, setChatData] = useState<any | null>(null)
+  const [chatbotData, setChatbotData] = useState<any | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [isDashboard, setIsDashboard] = useState(false)
 
   const messagesEndRef = useRef<HTMLDivElement | null>(null)
   const chatContainerRef = useRef<HTMLDivElement | null>(null)
   const audioRef = useRef<HTMLAudioElement | null>(null)
+  const messageIdRef = useRef(0)
 
-  const resolveChatResponse = (response: any): { text: string; followUp: string | null } | null => {
-    if (!response) return null
-
-    if (Array.isArray(response)) {
-      if (response.length === 0) return null
-      return resolveChatResponse(response[Math.floor(Math.random() * response.length)])
-    }
-
-    if (typeof response === 'string') {
-      return { text: response, followUp: null }
-    }
-
-    if (typeof response === 'object') {
-      const text = response.response || response.text || ''
-      if (!text) return null
-      return { text, followUp: response.followUp || null }
-    }
-
-    return null
+  const nextMessageId = () => {
+    messageIdRef.current += 1
+    return messageIdRef.current
   }
+
+  const createMessage = (sender: ChatSender, text: string, action?: 'redirect'): ChatMessage => ({
+    id: nextMessageId(),
+    text,
+    sender,
+    timestamp: new Date(),
+    action,
+  })
 
   useEffect(() => {
     const path = typeof window !== 'undefined' ? window.location.pathname : ''
@@ -68,16 +73,15 @@ export default function AIChatbot(): JSX.Element | null {
 
     const loadData = async () => {
       try {
-        const [configResponse, chatResponse] = await Promise.all([
+        const [configResponse, botData] = await Promise.all([
           fetch('/data/chat-config.json'),
-          fetch('/data/chat-data.json')
+          loadChatbotData(),
         ])
 
         const configData = await configResponse.json()
-        const chat = await chatResponse.json()
 
         setConfig(configData)
-        setChatData(chat)
+        setChatbotData(botData)
         setIsLoading(false)
       } catch (error) {
         console.error('Error loading chat data:', error)
@@ -93,29 +97,20 @@ export default function AIChatbot(): JSX.Element | null {
   }, [messages])
 
   useEffect(() => {
-    if (isOpen && !isMinimized && config?.enabled && chatData) {
+    if (isOpen && !isMinimized && config?.enabled && chatbotData) {
       if (audioRef.current) {
         audioRef.current.play().catch((e) => console.log('Audio play failed:', e))
       }
 
-      setTimeout(() => {
-        setShowWelcome(true)
-        const greetings = chatData.responses?.greeting || []
-        const randomGreeting = greetings[Math.floor(Math.random() * (greetings.length || 1))] || 'Hello!'
+      const welcomeTimer = setTimeout(async () => {
+        const greeting = await getReply('hello', chatbotData)
 
-        setMessages([
-          {
-            id: 1,
-            text: randomGreeting,
-            sender: 'bot',
-            timestamp: new Date()
-          }
-        ])
-
-        setTimeout(() => setShowWelcome(false), 5000)
+        setMessages([createMessage('bot', greeting || config.welcomeMessage || 'Namaste!')])
       }, 500)
+
+      return () => clearTimeout(welcomeTimer)
     }
-  }, [isOpen, isMinimized, config, chatData])
+  }, [isOpen, isMinimized, config, chatbotData])
 
   const handleOpenChat = () => {
     if (!config?.enabled) return
@@ -125,14 +120,13 @@ export default function AIChatbot(): JSX.Element | null {
 
   const handleMinimize = () => {
     setIsMinimized(true)
-    setShowWelcome(false)
     setTimeout(() => setIsOpen(false), 300)
   }
 
   const handleWhatsAppRedirect = (customMessage = '') => {
     if (!config) return
 
-    const phoneNumber = config.phoneNumber
+    const phoneNumber = String(config.phoneNumber || '').replace(/\D/g, '')
     const message = customMessage || config.defaultMessage
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
     if (typeof window !== 'undefined') window.open(url, '_blank')
@@ -144,115 +138,57 @@ export default function AIChatbot(): JSX.Element | null {
   }
 
   const shouldRedirect = (message: string) => {
-    const redirectWords = chatData?.redirect_triggers || []
+    const redirectWords = config?.redirect_triggers || []
     return redirectWords.some((word: string) => message.toLowerCase().includes(word.toLowerCase()))
   }
-
-  const handleSmallTalk = (userMessage: string) => {
-    const lowerMessage = userMessage.toLowerCase()
-
-    if (chatData?.small_talk) {
-      if (lowerMessage.includes('how are you') || lowerMessage.includes('how do you do')) {
-        return resolveChatResponse(chatData.small_talk.how_are_you || [])
-      }
-      if (lowerMessage.includes('who are you') || lowerMessage.includes('what are you')) {
-        return resolveChatResponse(chatData.small_talk.who_are_you || [])
-      }
-      if (lowerMessage.includes('what can you do') || lowerMessage.includes('what do you do')) {
-        return resolveChatResponse(chatData.small_talk.what_can_you_d || [])
-      }
-      if (lowerMessage.includes('joke') || lowerMessage.includes('funny')) {
-        return resolveChatResponse(chatData.small_talk.jokes || [])
-      }
-    }
-
-    return null
-  }
-
-  const findMatchingResponse = (userMessage: string) => {
-    if (!chatData) return null
-    const lowerMessage = userMessage.toLowerCase()
-
-    const smallTalkResponse = handleSmallTalk(userMessage)
-    if (smallTalkResponse) return smallTalkResponse
-
-    if (chatData.keywords?.thank_you?.some((keyword: string) => lowerMessage.includes(keyword))) {
-      return resolveChatResponse(chatData.responses?.thank_you || [])
-    }
-
-    if (chatData.keywords?.goodbye?.some((keyword: string) => lowerMessage.includes(keyword))) {
-      return resolveChatResponse(chatData.responses?.goodbye || [])
-    }
-
-    if (chatData.keywords?.hello?.some((keyword: string) => lowerMessage === keyword || lowerMessage === `${keyword} there`)) {
-      return resolveChatResponse(chatData.responses?.hello || [])
-    }
-
-    for (const [category, keywords] of Object.entries(chatData.keywords || {})) {
-      if ((keywords as string[]).some((keyword) => lowerMessage.includes(keyword))) {
-        return resolveChatResponse(chatData.responses?.[category])
-      }
-    }
-
-    return null
-  }
-
-  const simulateBotResponse = (userMessage: string) => {
+  const simulateBotResponse = async (userMessage: string) => {
     setIsTyping(true)
 
-    setTimeout(() => {
-      let botResponse: any = null
-      const matchingResponse = findMatchingResponse(userMessage)
+    setTimeout(async () => {
+      let botResponse: ChatMessage | null = null
 
       if (shouldRedirect(userMessage)) {
-        botResponse = {
-          id: messages.length + 1,
-          text: "Perfect! I'd love to connect you with our expert education counselors. They'll provide personalized guidance for your study abroad journey. Let me redirect you to WhatsApp now!",
-          sender: 'bot',
-          timestamp: new Date(),
-          action: 'redirect'
-        }
+        botResponse = createMessage(
+          'bot',
+          "Perfect! I'd love to connect you with our expert education counselors. They'll provide personalized guidance for your study abroad journey. Let me redirect you to WhatsApp now!",
+          'redirect'
+        )
       } else if (isPositiveResponse(userMessage)) {
-        botResponse = {
-          id: messages.length + 1,
-          text: "Excellent! I'm connecting you with our education counselors on WhatsApp now. They'll provide personalized guidance for your study abroad journey.",
-          sender: 'bot',
-          timestamp: new Date(),
-          action: 'redirect'
-        }
-      } else if (matchingResponse) {
-        botResponse = {
-          id: messages.length + 1,
-          text: matchingResponse.text,
-          sender: 'bot',
-          timestamp: new Date(),
-          followUp: matchingResponse.followUp,
-        }
-      } else {
-        const defaultResponses = chatData.responses?.default || []
-        const randomDefault = resolveChatResponse(defaultResponses) || { text: `Thanks — we'll follow up on "${userMessage}".`, followUp: null }
-        const formattedResponse = randomDefault.text.replace('{query}', userMessage)
-        botResponse = { id: messages.length + 1, text: formattedResponse, sender: 'bot', timestamp: new Date(), followUp: randomDefault.followUp }
+        botResponse = createMessage(
+          'bot',
+          "Excellent! I'm connecting you with our education counselors on WhatsApp now. They'll provide personalized guidance for your study abroad journey.",
+          'redirect'
+        )
+      } else if (chatbotData) {
+        const reply = await getReply(userMessage, chatbotData)
+        botResponse = createMessage('bot', reply || `Thanks — we'll follow up on "${userMessage}".`)
       }
 
-      setMessages((prev) => [...prev, botResponse])
+      setMessages((prev) => [...prev, botResponse ?? createMessage('bot', `Thanks — we'll follow up on "${userMessage}".`)])
       setIsTyping(false)
 
-      if (botResponse.action === 'redirect') {
+      if (botResponse?.action === 'redirect') {
         setTimeout(() => {
           handleWhatsAppRedirect()
         }, 2000)
       }
-    }, 1500)
+    }, 1000)
   }
 
   const handleSendMessage = () => {
     if (currentMessage.trim() === '' || !config?.enabled) return
 
-    const userMessage = { id: messages.length + 1, text: currentMessage, sender: 'user', timestamp: new Date() }
+    const userMessage = createMessage('user', currentMessage)
     setMessages((prev) => [...prev, userMessage])
     setCurrentMessage('')
-    simulateBotResponse(currentMessage)
+    void simulateBotResponse(currentMessage)
+  }
+
+  const sendMessageDirect = (text: string) => {
+    if (!config?.enabled) return
+    setMessages((prev) => [...prev, createMessage('user', text)])
+    setCurrentMessage('')
+    void simulateBotResponse(text)
   }
 
   const handleKeyPress = (e: any) => {
@@ -261,16 +197,16 @@ export default function AIChatbot(): JSX.Element | null {
 
   const quickActions = [
     { label: 'Services', query: 'What services do you offer?' },
-    { label: 'Countries', query: 'Which countries do you cover for study abroad?' },
-    { label: 'Tests', query: 'Do you provide test preparation for IELTS?' },
-    { label: 'Fees', query: 'What are your service fees?' },
+    { label: 'Universities', query: 'Show universities' },
+    { label: 'Colleges', query: 'Show colleges' },
     { label: 'Contact', query: 'What is your phone number and address?' },
-    { label: 'Consultation', query: 'I want to book free consultation' }
+    { label: 'About', query: 'Tell me about Study in Nepal' },
+    { label: 'Facilities', query: 'What facilities are available on campus?' },
+    { label: 'Scholarships', query: 'What scholarships are available?' }
   ]
 
   const handleQuickAction = (query: string) => {
-    setCurrentMessage(query)
-    setTimeout(() => handleSendMessage(), 100)
+    sendMessageDirect(query)
   }
 
   if (isLoading || !config?.enabled || isDashboard) return null
@@ -357,12 +293,6 @@ export default function AIChatbot(): JSX.Element | null {
           <div className="p-4 border-t border-gray-200 bg-white">
             <div className="flex items-center space-x-2 mb-3">
               <input type="text" value={currentMessage} onChange={(e) => setCurrentMessage(e.target.value)} onKeyPress={handleKeyPress} placeholder="Ask about studying abroad..." className="flex-1 border border-gray-300 rounded-full px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent" />
-
-              <button onClick={() => { /* report/flag */ }} aria-label="flag" className="w-10 h-10 bg-red-50 text-[var(--color-secondary)] rounded-full flex items-center justify-center border border-red-100 shadow-sm">
-                <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor" aria-hidden>
-                  <path d="M12 2L2 7l10 5 10-5-10-5zm0 7v11" stroke="currentColor" strokeWidth="0" />
-                </svg>
-              </button>
 
               <button onClick={handleSendMessage} className="bg-[var(--color-secondary)] text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-[var(--color-primary)] transition-colors btn-mobile">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>

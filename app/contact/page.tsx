@@ -5,10 +5,11 @@ import ContactForm from '@/components/shared/ContactForm'
 export const metadata: Metadata = {
   title: 'Contact | Study in Nepal',
   description: 'Contact Study in Nepal for guidance on university selection, course planning, and admissions support.',
+  keywords: ['contact study in nepal', 'study advice nepal', 'admissions support nepal'],
   openGraph: {
     title: 'Contact | Study in Nepal',
     description: 'Contact Study in Nepal for guidance on university selection, course planning, and admissions support.',
-    images: ['/og/contact.jpg'],
+    images: ['https://studyinnepal.com/og/contact.jpg'],
   },
   alternates: {
     canonical: 'https://studyinnepal.com/contact',
@@ -25,7 +26,8 @@ export default function ContactPage(): JSX.Element {
         <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">Contact</p>
         <h1 className="mt-4 text-4xl font-semibold text-[var(--color-dark)]">Reach out for a precise answer, not a generic reply.</h1>
         <p className="mt-6 text-base leading-7 text-slate-600">
-          This frontend-only contact page uses validated form handling, EmailJS submission, and a retry-friendly toast experience.
+          This contact page sends your message directly to directorbusiness@icecollege.edu.np.
+          If EmailJS is not configured, Gmail compose opens with your message filled in.
         </p>
         <div className="mt-8 grid gap-4 rounded-[1.75rem] bg-[var(--color-light)] p-6 text-sm text-[var(--color-dark)]">
           <p className="font-semibold">Typical response time</p>

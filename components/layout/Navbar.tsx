@@ -1,6 +1,7 @@
 "use client"
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 
@@ -37,6 +38,24 @@ export default function Navbar(): JSX.Element {
     setIsProgramsOpen(false)
     if (typeof window !== 'undefined') {
       window.location.href = href
+    }
+  }
+
+  const handleMobilePointerUp = (e: any) => {
+    // If a mousedown was prevented by overlays (dev overlay), catch pointerup and navigate
+    try {
+      const target = (e.target as HTMLElement).closest && (e.target as HTMLElement).closest('a')
+      if (target && target instanceof HTMLAnchorElement) {
+        const href = target.getAttribute('href')
+        if (href && href.startsWith('/')) {
+          // close menus then navigate
+          setIsMenuOpen(false)
+          setIsProgramsOpen(false)
+          if (typeof window !== 'undefined') window.location.href = href
+        }
+      }
+    } catch (err) {
+      // ignore
     }
   }
 
@@ -84,12 +103,11 @@ export default function Navbar(): JSX.Element {
       <nav className="relative mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <div className="flex items-center gap-6">
           <Link href="/" className="group flex items-center gap-3 font-semibold text-[var(--color-dark)]">
-            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,var(--color-primary),#143b7c)] text-sm font-bold text-white shadow-[0_12px_24px_rgba(8,26,58,0.18)]">
-              SN
-            </span>
+            <div className="relative h-11 w-11 overflow-hidden rounded-2xl shadow-[0_12px_24px_rgba(8,26,58,0.18)]">
+              <Image src="/favicon.svg" alt="Study in Nepal" fill sizes="44px" className="object-cover" />
+            </div>
             <span className="hidden leading-tight sm:block">
               <span className="block text-sm uppercase tracking-[0.28em] text-[var(--color-secondary)]">Study in Nepal</span>
-              <span className="block text-xs text-slate-500">Navy, red, and white guidance</span>
             </span>
           </Link>
 
@@ -151,7 +169,7 @@ export default function Navbar(): JSX.Element {
                         <Link href="/why-study-nepal" onClick={closeMenus} className="inline-flex rounded-full bg-white px-4 py-2 text-sm font-semibold text-[var(--color-primary)] transition hover:bg-[rgba(255,255,255,0.92)] focus-ring">
                           Why Study in Nepal
                         </Link>
-                        <Link href="/booking" onClick={closeMenus} className="inline-flex rounded-full border border-white/20 bg-[var(--color-secondary)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#ab0d26] focus-ring">
+                        <Link href="/booking/institutional" onClick={closeMenus} className="inline-flex rounded-full border border-white/20 bg-[var(--color-secondary)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#ab0d26] focus-ring">
                           Institutional Inquiry
                         </Link>
                       </div>
@@ -206,7 +224,7 @@ export default function Navbar(): JSX.Element {
             </div>
 
             <Link
-              href="/booking"
+              href="/booking/student"
               aria-current={pathname === '/booking' ? 'page' : undefined}
               className={`rounded-full px-4 py-2 text-sm font-medium transition ${pathname === '/booking' ? 'bg-[rgba(200,16,46,0.08)] text-[var(--color-secondary)]' : 'text-slate-600 hover:bg-[rgba(200,16,46,0.06)] hover:text-[var(--color-secondary)]'}`}
             >
@@ -214,7 +232,7 @@ export default function Navbar(): JSX.Element {
             </Link>
 
             <Link
-              href="/booking"
+              href="/booking/institutional"
               aria-current={pathname === '/booking' ? 'page' : undefined}
               className={`rounded-full px-4 py-2 text-sm font-medium transition ${pathname === '/booking' ? 'bg-[rgba(200,16,46,0.08)] text-[var(--color-secondary)]' : 'text-slate-600 hover:bg-[rgba(200,16,46,0.06)] hover:text-[var(--color-secondary)]'}`}
             >
@@ -237,7 +255,7 @@ export default function Navbar(): JSX.Element {
             href="/booking"
             className="hidden rounded-full bg-[var(--color-secondary)] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_14px_30px_rgba(200,16,46,0.24)] transition hover:-translate-y-0.5 hover:bg-[var(--color-primary)] focus-ring md:inline-flex"
           >
-            Register Now
+            Book Now
           </Link>
 
           <button
@@ -264,26 +282,12 @@ export default function Navbar(): JSX.Element {
 
       {isMenuOpen && (
         <div className="border-t border-[rgba(200,16,46,0.14)] bg-white xl:hidden">
-          <div className="mx-auto max-h-[calc(100dvh-5rem)] max-w-7xl overflow-y-auto overscroll-contain px-4 py-4 touch-pan-y sm:px-6 lg:px-8">
-            <a
-              href="/"
-              onClick={(e) => {
-                e.preventDefault()
-                handleMobileNavigate('/')
-              }}
-              className="block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-[rgba(15,42,95,0.06)]"
-            >
+          <div onPointerUp={handleMobilePointerUp} className="mx-auto max-h-[calc(100dvh-5rem)] max-w-7xl overflow-y-auto overscroll-contain px-4 py-4 touch-pan-y sm:px-6 lg:px-8">
+            <a href="/" className="block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-[rgba(15,42,95,0.06)]">
               Home
             </a>
 
-            <a
-              href="/why-study-nepal"
-              onClick={(e) => {
-                e.preventDefault()
-                handleMobileNavigate('/why-study-nepal')
-              }}
-              className="mt-2 block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-[rgba(15,42,95,0.06)]"
-            >
+            <a href="/why-study-nepal" className="mt-2 block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-[rgba(15,42,95,0.06)]">
               Why Study in Nepal
             </a>
 
@@ -301,15 +305,7 @@ export default function Navbar(): JSX.Element {
             {isProgramsOpen && (
               <div className="mt-3 space-y-2 rounded-[1.5rem] border border-[rgba(15,42,95,0.08)] bg-[rgba(15,42,95,0.02)] p-3">
                 {studyLinks.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    onClick={(e) => {
-                      e.preventDefault()
-                      handleMobileNavigate(item.href)
-                    }}
-                    className="block rounded-2xl px-4 py-3 text-sm font-medium text-[var(--color-dark)] transition hover:bg-white"
-                  >
+                  <a key={item.label} href={item.href} className="block rounded-2xl px-4 py-3 text-sm font-medium text-[var(--color-dark)] transition hover:bg-white">
                     <span className="block">{item.label}</span>
                     <span className="mt-1 block text-xs font-normal text-slate-600">{item.description}</span>
                   </a>
@@ -317,49 +313,14 @@ export default function Navbar(): JSX.Element {
               </div>
             )}
 
-            <a
-              href="/booking"
-              onClick={(e) => {
-                e.preventDefault()
-                handleMobileNavigate('/booking')
-              }}
-              className="mt-2 block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-[rgba(200,16,46,0.06)]"
-            >
-              Student Inquiry
-            </a>
 
-            <a
-              href="/booking"
-              onClick={(e) => {
-                e.preventDefault()
-                handleMobileNavigate('/booking')
-              }}
-              className="mt-2 block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-[rgba(200,16,46,0.06)]"
-            >
-              Institutional Inquiry
-            </a>
+            <a href="/booking/student" className="mt-2 block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-[rgba(200,16,46,0.06)]">Student Inquiry</a>
 
-            <a
-              href="/about"
-              onClick={(e) => {
-                e.preventDefault()
-                handleMobileNavigate('/about')
-              }}
-              className="mt-2 block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-100"
-            >
-              About Us
-            </a>
+            <a href="/booking/institutional" className="mt-2 block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-[rgba(200,16,46,0.06)]">Institutional Inquiry</a>
 
-            <a
-              href="/booking"
-              onClick={(e) => {
-                e.preventDefault()
-                handleMobileNavigate('/booking')
-              }}
-              className="mt-4 block rounded-2xl bg-[var(--color-secondary)] px-4 py-3 text-center font-medium text-white"
-            >
-              Register Now
-            </a>
+            <a href="/about" className="mt-2 block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-100">About Us</a>
+
+            <a href="/booking" className="mt-4 block rounded-2xl bg-[var(--color-secondary)] px-4 py-3 text-center font-medium text-white">Book Now</a>
           </div>
         </div>
       )}

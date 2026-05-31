@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: 'Study in Nepal',
     images: [
       {
-        url: '/og/default.jpg',
+        url: `${baseUrl.origin}/og/default.jpg`,
         width: 1200,
         height: 630,
         alt: 'Study in Nepal portal preview',
@@ -61,7 +61,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
   },
 }
 
@@ -80,6 +81,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
+        <link rel="icon" href="/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="alternate icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/favicon.svg" />
         <AIChatbot />
         <WhatsAppButton />
         <ScrollToTopButton />

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About | Study in Nepal',
     description: 'Learn how Study in Nepal helps international students make informed decisions about studying in Nepal.',
-    images: ['/og/about.jpg'],
+      images: ['https://studyinnepal.com/og/about.jpg'],
   },
   alternates: {
     canonical: 'https://studyinnepal.com/about',

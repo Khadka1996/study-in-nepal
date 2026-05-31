@@ -11,6 +11,10 @@ const routes = [
   '/testimonials',
   '/booking',
   '/contact',
+  '/terms-conditions',
+  '/privacy-policy',
+  '/cookie-policy',
+  '/disclaimer',
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

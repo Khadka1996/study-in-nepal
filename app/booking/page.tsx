@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Booking | Study in Nepal',
     description: 'Book a consultation to receive a focused plan for study options, admissions, and next steps in Nepal.',
-    images: ['/og/booking.jpg'],
+    images: ['https://studyinnepal.com/og/booking.jpg'],
   },
   alternates: {
     canonical: 'https://studyinnepal.com/booking',
@@ -20,25 +20,21 @@ export const dynamic = 'force-static'
 export default function BookingPage(): JSX.Element {
   return (
     <main className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-      <section className="grid gap-8 rounded-[2rem] border border-[var(--color-light)] bg-white p-8 shadow-soft lg:grid-cols-[0.9fr_1.1fr] lg:p-12">
-        <div>
+      <section className="rounded-[2rem] border border-[var(--color-light)] bg-white p-8 shadow-soft">
         <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">Booking</p>
-        <h1 className="mt-4 text-4xl font-semibold text-[var(--color-dark)]">Schedule a consultation before you commit to a path.</h1>
-        <p className="mt-6 text-base leading-7 text-slate-600">
-          This booking experience generates a reference number and sends an EmailJS confirmation, while keeping the frontend responsive and simple.
-        </p>
-        <div className="mt-8 rounded-[1.75rem] bg-[linear-gradient(180deg,rgba(26,95,122,0.08),rgba(244,162,97,0.14))] p-6">
-          <p className="text-sm font-semibold text-[var(--color-dark)]">What happens next</p>
-          <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-700">
-            <li>We receive your request and generate a booking reference.</li>
-            <li>You get a confirmation email through EmailJS.</li>
-            <li>We follow up with your consultation details.</li>
-          </ul>
-        </div>
-        </div>
+        <h1 className="mt-4 text-4xl font-semibold text-[var(--color-dark)]">Choose an inquiry type</h1>
+        <p className="mt-6 text-base leading-7 text-slate-600">Select whether you're enquiring as an individual student or on behalf of an institution.</p>
 
-        <div className="rounded-[1.75rem] border border-slate-200 bg-slate-50 p-6">
-          <BookingForm />
+        <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+          <a href="/booking/student" className="rounded-2xl border border-slate-200 bg-white px-6 py-6 shadow-sm text-left hover:shadow-md">
+            <p className="text-sm font-semibold text-[var(--color-accent)]">Student Inquiry</p>
+            <p className="mt-2 text-sm text-slate-700">Personal guidance, application help and pathway planning.</p>
+          </a>
+
+          <a href="/booking/institutional" className="rounded-2xl border border-slate-200 bg-white px-6 py-6 shadow-sm text-left hover:shadow-md">
+            <p className="text-sm font-semibold text-[var(--color-accent)]">Institutional Inquiry</p>
+            <p className="mt-2 text-sm text-slate-700">Partnerships, bulk admissions, and institutional consultations.</p>
+          </a>
         </div>
       </section>
     </main>

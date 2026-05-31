@@ -19,7 +19,7 @@
     "name": "Pokhara University",
     "city": "Pokhara",
     "province": "Gandaki",
-    "description": "A growing university offering professional programs with an accessible city environment.",
+    "description": "A growing university offering professional programs in a student-friendly city environment.",
     "website": "https://pu.edu.np/",
     "popularCourses": ["Management", "Hotel Management", "Pharmacy", "IT", "Engineering"]
   },
@@ -27,8 +27,8 @@
     "name": "Purbanchal University",
     "city": "Biratnagar",
     "province": "Koshi",
-    "description": "A public university with a diverse range of affiliated programs and regional reach.",
-    "website": "https://pu.edu.np/",
+    "description": "A public university with a diverse range of affiliated programs and strong eastern Nepal reach.",
+    "website": "https://purbuniv.edu.np/",
     "popularCourses": ["Medicine", "Engineering", "Management", "Law", "Education"]
   },
   {
@@ -43,8 +43,8 @@
     "name": "Mid-West University",
     "city": "Birendranagar",
     "province": "Karnali",
-    "description": "A public university supporting regional higher education and professional development.",
-    "website": "https://mu.edu.np/",
+    "description": "A public university supporting regional higher education and professional development in western Nepal.",
+    "website": "https://mwu.edu.np/",
     "popularCourses": ["Humanities", "Management", "Education", "Agriculture"]
   },
   {
@@ -78,5 +78,19 @@
     "description": "A public university known for Sanskrit, traditional studies, and cultural disciplines.",
     "website": "https://nsu.edu.np/",
     "popularCourses": ["Sanskrit", "Philosophy", "Linguistics", "Cultural Studies"]
+  },
+  {
+    "name": "Nepal Medical College",
+    "city": "Kathmandu",
+    "province": "Bagmati",
+    "description": "A respected medical college with clinical training and healthcare-focused education.",
+    "popularCourses": ["MBBS", "Nursing", "Public Health", "Pharmacy", "Laboratory Science"]
+  },
+  {
+    "name": "B.P. Koirala Institute of Health Sciences",
+    "city": "Dharan",
+    "province": "Koshi",
+    "description": "A leading health sciences institute with strong clinical, nursing, and research pathways.",
+    "popularCourses": ["MBBS", "BDS", "BSc Nursing", "MD/MS", "Public Health"]
   }
 ]

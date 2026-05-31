@@ -25,15 +25,21 @@ interface BookingSuccessState {
   name: string
   preferredDate: string
   timeSlot: string
+  deliveryMode: 'emailjs' | 'gmail-compose'
 }
 
 const timeSlotOptions: Array<BookingFormValues['timeSlot']> = ['Morning', 'Afternoon', 'Evening']
+const bookingRecipientEmail = 'directorbusiness@icecollege.edu.np'
 
 function createReference(): string {
   return `BK-${Date.now().toString(36).toUpperCase()}`
 }
 
-export default function BookingForm(): JSX.Element {
+interface BookingFormProps {
+  inquiryType?: 'student' | 'institutional'
+}
+
+export default function BookingForm({ inquiryType = 'student' }: BookingFormProps): JSX.Element {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
   const [success, setSuccess] = useState<BookingSuccessState | null>(null)
   const [errorMessage, setErrorMessage] = useState<string>('')
@@ -64,8 +70,21 @@ export default function BookingForm(): JSX.Element {
     const reference = createReference()
 
     try {
-      await sendEmail({
+      const delivery = await sendEmail({
         templateParams: {
+          to_email: bookingRecipientEmail,
+          recipient_email: bookingRecipientEmail,
+          reply_to: values.email,
+          subject: `New ${inquiryType} booking request from ${values.name}`,
+          message: [
+            `Name: ${values.name}`,
+            `Email: ${values.email}`,
+            `Phone: ${values.phone}`,
+            `Preferred date: ${values.preferredDate}`,
+            `Time slot: ${values.timeSlot}`,
+            `Purpose: ${values.purpose}`,
+            `Reference: ${reference}`,
+          ].join('\n'),
           booking_reference: reference,
           name: values.name,
           email: values.email,
@@ -73,7 +92,7 @@ export default function BookingForm(): JSX.Element {
           preferred_date: values.preferredDate,
           time_slot: values.timeSlot,
           purpose: values.purpose,
-          form_type: 'booking',
+          form_type: inquiryType,
         },
       })
 
@@ -82,12 +101,13 @@ export default function BookingForm(): JSX.Element {
         name: values.name,
         preferredDate: values.preferredDate,
         timeSlot: values.timeSlot,
+        deliveryMode: delivery.mode,
       })
       reset()
       trackAppointmentBooked()
     } catch (error: unknown) {
       logger.error('Booking form submission failed', error)
-      setErrorMessage('Something went wrong. Please try booking again.')
+      setErrorMessage(error instanceof Error ? error.message : 'Something went wrong. Please try booking again.')
     } finally {
       setIsSubmitting(false)
     }
@@ -99,12 +119,15 @@ export default function BookingForm(): JSX.Element {
         <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">Booking confirmed</p>
         <h2 className="mt-4 text-3xl font-semibold text-[var(--color-dark)]">Your consultation request is in the queue.</h2>
         <p className="mt-4 text-sm leading-6 text-slate-600">
-          Reference {success.reference}. We will confirm your slot and reply with next steps within 24 hours.
+          Reference {success.reference}. We will confirm your {inquiryType} slot and reply with next steps within 24 hours.
         </p>
         <div className="mt-6 rounded-3xl bg-[var(--color-light)] p-5 text-sm text-[var(--color-dark)]">
           <p><span className="font-semibold">Name:</span> {success.name}</p>
           <p><span className="font-semibold">Preferred date:</span> {success.preferredDate}</p>
           <p><span className="font-semibold">Time slot:</span> {success.timeSlot}</p>
+          {success.deliveryMode === 'gmail-compose' ? (
+            <p className="mt-2 text-[var(--color-primary)]">Gmail draft opened. Please review and send it from Gmail.</p>
+          ) : null}
         </div>
       </div>
     )

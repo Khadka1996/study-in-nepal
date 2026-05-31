@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Careers | Study in Nepal',
     description: 'Understand how study choices in Nepal can connect to internships, jobs, and long-term career development.',
-    images: ['/og/careers.jpg'],
+      images: ['https://studyinnepal.com/og/careers.jpg'],
   },
   alternates: {
     canonical: 'https://studyinnepal.com/careers',

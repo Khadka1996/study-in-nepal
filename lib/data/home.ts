@@ -47,26 +47,49 @@ export const whyNepalItems: WhyNepalItem[] = [
     description: 'Programs in business, hospitality, IT, and health can connect to employability and long-term plans.',
     imageSrc: '/images/why-nepal-career.svg',
   },
+  {
+    title: 'Supportive student guidance',
+    description: 'Students can get direct help with admissions, documentation, and choosing the right university fit.',
+    imageSrc: '/images/why-nepal-guidance.svg',
+  },
 ]
 
 export const homeUniversities: HomeUniversityCard[] = [
   {
     name: 'Kathmandu University',
     location: 'Dhulikhel',
-    description: 'Recognized for strong academic planning, research culture, and a premium campus experience.',
+    description: 'A research-led university with a polished campus experience and strong international appeal.',
     imageSrc: '/images/ku-logo.jpg',
   },
   {
     name: 'Tribhuvan University',
     location: 'Kathmandu',
-    description: 'Broad program coverage with a long academic footprint and wide student familiarity.',
+    description: 'Nepal’s largest public university, offering a deep academic network across every major discipline.',
     imageSrc: '/images/tu-logo.jpg',
   },
   {
     name: 'Pokhara University',
     location: 'Pokhara',
-    description: 'A practical choice for students looking for modern programs and an accessible city setting.',
+    description: 'A modern choice for career-focused study in a city that is popular with international students.',
     imageSrc: '/images/pokhara-logo.png',
+  },
+  {
+    name: 'Purbanchal University',
+    location: 'Biratnagar',
+    description: 'A strong eastern Nepal option with broad professional pathways and regional reach.',
+    imageSrc: '/images/purbanchal-logo.png',
+  },
+  {
+    name: 'Nepal Open University',
+    location: 'Lalitpur',
+    description: 'Flexible open and distance learning for students who need accessible study pathways.',
+    imageSrc: '/images/open-university.png',
+  },
+  {
+    name: 'Far Western University',
+    location: 'Dhangadhi',
+    description: 'A growing public university supporting study opportunities in Nepal’s far-western region.',
+    imageSrc: '/images/farwestern.jpg',
   },
 ]
 

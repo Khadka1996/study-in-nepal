@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Colleges | Study in Nepal',
     description: 'Explore colleges in Nepal with a clear focus on affordability, specialization, and student experience.',
-    images: ['/og/colleges.jpg'],
+    images: ['https://studyinnepal.com/og/colleges.jpg'],
   },
   alternates: {
     canonical: 'https://studyinnepal.com/colleges',

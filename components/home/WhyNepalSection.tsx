@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 
 import { whyNepalItems } from '@/lib/data/home'
 
@@ -16,43 +15,52 @@ export default function WhyNepalSection(): JSX.Element {
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-3">
-            <Link href="/why-study-nepal" className="inline-flex rounded-full bg-white px-5 py-3 text-sm font-semibold text-[var(--color-primary)] transition hover:bg-[rgba(255,255,255,0.92)] focus-ring">
-              Read study info
-            </Link>
-            <Link href="/booking" className="inline-flex rounded-full border border-white/20 bg-[var(--color-secondary)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#ab0d26] focus-ring">
-              Institutional Inquiry
-            </Link>
-          </div>
-
           <div className="overflow-hidden rounded-[1.5rem] border border-white/12 bg-white/10 p-3 backdrop-blur">
             <Image
-              src="/images/why-nepal-campus.svg"
+              src="/images/student-life-in-nepal.jpg"
               alt="Campus and student life in Nepal"
-              width={720}
+              width={860}
               height={480}
               sizes="(max-width: 768px) 100vw, 50vw"
               loading="lazy"
-              className="h-56 w-full rounded-[1.1rem] object-cover"
+              className="h-62 w-full rounded-[1.1rem] object-cover object-center"
             />
           </div>
         </div>
 
         <div className="grid gap-4 lg:self-center">
-          {whyNepalItems.map((item) => (
-            <article key={item.title} className="grid gap-4 rounded-[1.5rem] border border-white/12 bg-white/7 p-5 sm:grid-cols-[120px_1fr] sm:items-center">
-              <Image
-                src={item.imageSrc}
-                alt={`${item.title} in Nepal`}
-                width={280}
-                height={180}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                loading="lazy"
-                className="h-24 w-full rounded-2xl object-cover"
-              />
+          {whyNepalItems.map((item, index) => (
+            <article key={item.title} className="flex items-center gap-4 rounded-[1.5rem] border border-white/12 bg-white/7 p-5">
+              <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center text-white">
+                {index === 0 && (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className="h-10 w-10 sm:h-11 sm:w-11">
+                    <path d="M12 2l7 4v6c0 5-3.5 9.6-7 10-3.5-.4-7-5-7-10V6l7-4z" />
+                    <path d="M9 12l2 2 4-4" />
+                  </svg>
+                )}
+                {index === 1 && (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className="h-10 w-10 sm:h-11 sm:w-11">
+                    <path d="M4 19h16" />
+                    <path d="M6 19V9l6-4 6 4v10" />
+                    <path d="M9 19v-5h6v5" />
+                  </svg>
+                )}
+                {index === 2 && (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className="h-10 w-10 sm:h-11 sm:w-11">
+                    <path d="M4 18l5-5 4 4 7-8" />
+                    <path d="M19 9V5h-4" />
+                  </svg>
+                )}
+                {index === 3 && (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className="h-10 w-10 sm:h-11 sm:w-11">
+                    <path d="M12 22s8-4.5 8-11.5A8 8 0 0 0 4 10.5C4 17.5 12 22 12 22z" />
+                    <path d="M9.5 10.5l1.7 1.7 3.8-3.8" />
+                  </svg>
+                )}
+              </div>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-[rgba(255,255,255,0.72)]">{item.title}</p>
-                <p className="mt-2 text-sm leading-6 text-white/84">{item.description}</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-white/72">{item.title}</p>
+                <p className="mt-2 text-sm leading-6 text-white/88">{item.description}</p>
               </div>
             </article>
           ))}

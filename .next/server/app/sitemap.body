@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>https://studyinnepal.com/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
+<url><loc>https://studyinnepal.com/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://studyinnepal.com/contact</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://studyinnepal.com/booking</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://studyinnepal.com/booking/student</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://studyinnepal.com/booking/institutional</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://studyinnepal.com/courses</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://studyinnepal.com/universities</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://studyinnepal.com/colleges</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://studyinnepal.com/testimonials</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://studyinnepal.com/universities/tribhuvan</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://studyinnepal.com/universities/kathmandu</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://studyinnepal.com/universities/pokhara</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://studyinnepal.com/universities/purbanchal</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://studyinnepal.com/universities/lumbini</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://studyinnepal.com/universities/midwestern</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://studyinnepal.com/universities/nepal-sanskrit</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://studyinnepal.com/universities/nepal-open</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://studyinnepal.com/universities/agriculture-forestry</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://studyinnepal.com/universities/far-western</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://studyinnepal.com/universities/nepal-med</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://studyinnepal.com/universities/bpkihs</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+</urlset>

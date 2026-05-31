@@ -70,6 +70,27 @@ export default function AIAssistantWidget(): JSX.Element | null {
   const chatContainerRef = useRef<HTMLDivElement | null>(null)
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
+  const resolveChatResponse = (response: any): { text: string; followUp: string | null } | null => {
+    if (!response) return null
+
+    if (Array.isArray(response)) {
+      if (response.length === 0) return null
+      return resolveChatResponse(response[Math.floor(Math.random() * response.length)])
+    }
+
+    if (typeof response === 'string') {
+      return { text: response, followUp: null }
+    }
+
+    if (typeof response === 'object') {
+      const text = response.response || response.text || ''
+      if (!text) return null
+      return { text, followUp: response.followUp || null }
+    }
+
+    return null
+  }
+
   useEffect(() => {
     const path = typeof window !== 'undefined' ? window.location.pathname : ''
     setIsDashboard(path.startsWith('/dashboard'))
@@ -196,6 +217,15 @@ export default function AIAssistantWidget(): JSX.Element | null {
 
     const lowerMessage = userMessage.toLowerCase()
 
+    // Prioritize explicit intent phrases so quick actions always map to the correct category.
+    if (lowerMessage.includes('what services do you offer')) return resolveChatResponse(chatData.responses?.services)
+    if (lowerMessage.includes('show universities')) return resolveChatResponse(chatData.responses?.universities)
+    if (lowerMessage.includes('show colleges')) return resolveChatResponse(chatData.responses?.colleges)
+    if (lowerMessage.includes('what is your phone number and address')) return resolveChatResponse(chatData.responses?.contact)
+    if (lowerMessage.includes('tell me about study in nepal')) return resolveChatResponse(chatData.responses?.about)
+    if (lowerMessage.includes('what facilities are available on campus')) return resolveChatResponse(chatData.responses?.facilities)
+    if (lowerMessage.includes('what scholarships are available')) return resolveChatResponse(chatData.responses?.scholarships)
+
     const smallTalkResponse = handleSmallTalk(userMessage)
     if (smallTalkResponse) return smallTalkResponse
 
@@ -216,7 +246,7 @@ export default function AIAssistantWidget(): JSX.Element | null {
 
     for (const [category, keywords] of Object.entries(chatData.keywords || {})) {
       if (keywords.some(keyword => lowerMessage.includes(keyword))) {
-        return chatData.responses?.[category] || null
+        return resolveChatResponse(chatData.responses?.[category])
       }
     }
 
@@ -247,22 +277,16 @@ export default function AIAssistantWidget(): JSX.Element | null {
           action: 'redirect'
         }
       } else if (matchingResponse) {
-        if (typeof matchingResponse === 'string') {
-          botResponse = {
-            id: messages.length + 1,
-            text: matchingResponse,
-            sender: 'bot',
-            timestamp: new Date()
-          }
-        } else {
-          const responseText = matchingResponse.response || JSON.stringify(matchingResponse)
-          botResponse = {
-            id: messages.length + 1,
-            text: responseText,
-            sender: 'bot',
-            timestamp: new Date(),
-            followUp: matchingResponse.followUp || null
-          }
+        const resolved = typeof matchingResponse === 'string'
+          ? { text: matchingResponse, followUp: null }
+          : matchingResponse
+
+        botResponse = {
+          id: messages.length + 1,
+          text: resolved.text,
+          sender: 'bot',
+          timestamp: new Date(),
+          followUp: resolved.followUp || null
         }
       } else {
         const defaultResponses = chatData?.responses?.default || ['Thanks for the question — we will connect you shortly.']
@@ -304,6 +328,16 @@ export default function AIAssistantWidget(): JSX.Element | null {
     simulateBotResponse(currentMessage)
   }
 
+  const sendMessageDirect = (text: string) => {
+    if (!config?.enabled) return
+    setMessages(prev => {
+      const msg: ChatMessage = { id: prev.length + 1, text, sender: 'user', timestamp: new Date() }
+      return [...prev, msg]
+    })
+    setCurrentMessage('')
+    simulateBotResponse(text)
+  }
+
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleSendMessage()
@@ -312,18 +346,16 @@ export default function AIAssistantWidget(): JSX.Element | null {
 
   const quickActions = [
     { label: 'Services', query: 'What services do you offer?' },
-    { label: 'Countries', query: 'Which countries do you cover for study abroad?' },
-    { label: 'Tests', query: 'Do you provide test preparation for IELTS?' },
-    { label: 'Fees', query: 'What are your service fees?' },
+    { label: 'Universities', query: 'Show universities' },
+    { label: 'Colleges', query: 'Show colleges' },
     { label: 'Contact', query: 'What is your phone number and address?' },
-    { label: 'Consultation', query: 'I want to book free consultation' }
+    { label: 'About', query: 'Tell me about Study in Nepal' },
+    { label: 'Facilities', query: 'What facilities are available on campus?' },
+    { label: 'Scholarships', query: 'What scholarships are available?' }
   ]
 
   const handleQuickAction = (query: string) => {
-    setCurrentMessage(query)
-    setTimeout(() => {
-      handleSendMessage()
-    }, 100)
+    sendMessageDirect(query)
   }
 
   if (isLoading || !config?.enabled || isDashboard) return null

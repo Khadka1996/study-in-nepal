@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import type { SVGProps } from 'react'
 
 function IconSocialMobility(props: SVGProps<SVGSVGElement>): JSX.Element {
@@ -79,120 +78,89 @@ const pillars = [
   },
 ]
 
-const focusPoints = [
-  { title: 'Social Mobility', note: 'Guided growth', icon: IconSocialMobility },
-  { title: 'Institutional Strength', note: 'Trusted pathways', icon: IconInstitutionalStrength },
-  { title: 'Cultural Diplomacy', note: 'Soft power', icon: IconCulturalDiplomacy },
-  { title: 'Economic Growth', note: 'Sustainable development', icon: IconEconomicGrowth },
-]
-
 export default function FoundationSection(): JSX.Element {
   return (
     <section className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="animate-fade-up overflow-hidden rounded-[2rem] border border-[rgba(15,42,95,0.12)] bg-[linear-gradient(180deg,#081a3a_0%,#0b214d_46%,#132f68_100%)] text-white shadow-[0_24px_60px_rgba(8,26,58,0.18)]">
-        <div className="border-b border-white/10 px-6 py-8 sm:px-8">
+      <div className="animate-fade-up relative overflow-hidden rounded-[2rem] border border-[rgba(15,42,95,0.12)] bg-[linear-gradient(180deg,#081a3a_0%,#0b214d_46%,#132f68_100%)] text-white shadow-[0_24px_60px_rgba(8,26,58,0.18)]">
+        <Image
+          src="/images/bg-students.png"
+          alt=""
+          fill
+          priority={false}
+          aria-hidden="true"
+          className="absolute inset-0 object-contain object-center opacity-[0.44] brightness-110 saturate-125 scale-[0.72] transform-gpu"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(8,26,58,0.66)_0%,rgba(11,33,77,0.5)_55%,rgba(19,47,104,0.64)_100%)]" />
+
+        <div className="relative px-6 py-8 sm:px-8 sm:py-10">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[rgba(255,255,255,0.68)]">Global reach</p>
             <h2 className="mt-3 text-3xl font-semibold sm:text-4xl">Nepal&apos;s Academic Infrastructure</h2>
             <p className="mt-4 text-sm leading-7 text-white/78">
-              A structured foundation section that feels editorial, balanced, and more premium than a stack of isolated cards.
+              A simple, premium foundation section that uses student imagery, clean spacing, and clear academic highlights.
             </p>
           </div>
-        </div>
 
-        <div className="grid lg:grid-cols-[0.92fr_1.08fr]">
-          <div className="relative border-b border-white/10 p-6 lg:border-b-0 lg:border-r lg:p-8">
-            <div className="absolute left-6 top-6 h-24 w-24 rounded-full bg-[var(--color-secondary)]/18 blur-3xl" />
-            <div className="absolute bottom-8 right-8 h-28 w-28 rounded-full bg-white/10 blur-3xl" />
+          <div className="mt-8 grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
+            <div className="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/12 p-6">
+              <div className="absolute -left-10 top-6 h-28 w-28 rounded-full bg-white/10 blur-3xl" />
+              <div className="absolute bottom-6 right-6 h-28 w-28 rounded-full bg-[var(--color-secondary)]/15 blur-3xl" />
 
-            <div className="animate-fade-up-delay relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/7 p-4 backdrop-blur">
-              <div className="grid gap-3 sm:grid-cols-[1.1fr_0.9fr]">
-                <div className="relative overflow-hidden rounded-[1.35rem]">
+              <div className="relative grid gap-4 sm:grid-cols-[0.95fr_1.05fr] sm:items-center">
+                <div className="overflow-hidden rounded-[1.35rem] border border-white/10 bg-black/10">
                   <Image
-                    src="/images/why-nepal-campus.svg"
-                    alt="Students and campus in Nepal"
-                    width={760}
-                    height={520}
-                    className="h-[17rem] w-full object-cover sm:h-[20rem]"
+                    src="/images/student-life-in-nepal.jpg"
+                    alt="Students in Nepal"
+                    width={720}
+                    height={960}
+                    className="h-full min-h-[18rem] w-full object-cover object-center"
                   />
-                  <div className="absolute inset-x-0 bottom-0 bg-[linear-gradient(180deg,transparent,rgba(8,26,58,0.92))] p-4 pt-16">
-                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[rgba(255,255,255,0.72)]">Student inquiry</p>
-                    <p className="mt-2 text-sm leading-6 text-white/82">
-                      Request a clean, direct consultation path for applications and university comparisons.
-                    </p>
-                  </div>
                 </div>
 
-                <div className="grid gap-3">
-                  <div className="relative overflow-hidden rounded-[1.35rem] border border-white/10 bg-white/10 p-3">
-                    <Image src="/images/hero-study-nepal.svg" alt="Study in Nepal visual" width={420} height={220} className="h-[8.6rem] w-full rounded-[1rem] object-cover sm:h-[9.6rem]" />
-                  </div>
-                  <div className="rounded-[1.35rem] border border-white/10 bg-white/10 p-4 transition-transform duration-300 hover:-translate-y-0.5">
-                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[rgba(255,255,255,0.72)]">Why Study in Nepal</p>
-                    <p className="mt-2 text-sm leading-6 text-white/78">
-                      Stronger academic structure, realistic planning, and a clearer path from shortlisting to inquiry.
+                <div className="space-y-4">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[rgba(255,255,255,0.7)]">Student view</p>
+                    <h3 className="mt-2 text-2xl font-semibold">Simple, supportive, and focused on real outcomes.</h3>
+                    <p className="mt-3 text-sm leading-6 text-white/78">
+                      A cleaner path for students who want direct guidance, practical planning, and a better sense of campus life.
                     </p>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      <Link href="/booking" className="inline-flex rounded-full bg-[var(--color-secondary)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#ab0d26] focus-ring">
-                        Student Inquiry
-                      </Link>
-                      <Link href="/why-study-nepal" className="inline-flex rounded-full border border-white/15 bg-white px-4 py-2 text-sm font-semibold text-[var(--color-primary)] transition hover:bg-[rgba(255,255,255,0.92)] focus-ring">
-                        Explore why Nepal
-                      </Link>
-                    </div>
+                  </div>
+
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {stats.slice(0, 4).map((item) => (
+                      <article key={item.label} className="rounded-[1.25rem] border border-white/10 bg-white/8 px-4 py-4 text-center">
+                        <div className="text-3xl font-semibold text-white">{item.value}</div>
+                        <p className="mt-2 text-[11px] font-medium uppercase tracking-[0.18em] text-white/70">{item.label}</p>
+                      </article>
+                    ))}
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="p-6 sm:p-8">
-            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-              {stats.map((item) => (
-                <article key={item.label} className="rounded-[1.35rem] border border-white/12 bg-white/8 px-4 py-5 text-center backdrop-blur transition-transform duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/12">
-                  <div className="text-3xl font-semibold tracking-tight text-white">{item.value}</div>
-                  <p className="mt-2 text-xs font-medium uppercase tracking-[0.18em] text-white/68">{item.label}</p>
-                </article>
-              ))}
-            </div>
-
-            <div className="mt-5 overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/7">
+            <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/12">
               {pillars.map((pillar, index) => (
                 <article
                   key={pillar.number}
-                  className={`group grid gap-4 px-5 py-4 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/[0.08] sm:grid-cols-[92px_1fr] sm:items-center ${index !== pillars.length - 1 ? 'border-b border-white/10' : ''}`}
+                  className={`grid gap-4 px-5 py-5 transition-colors duration-300 ${index !== pillars.length - 1 ? 'border-b border-white/10' : ''}`}
                 >
-                  <div className="flex items-center gap-4 sm:block">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-[rgba(255,255,255,0.1)] text-base font-semibold text-white transition-transform duration-300 group-hover:scale-105">
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/10 text-base font-semibold text-white">
                       {pillar.number}
                     </div>
-                    <div className="mt-0 sm:mt-3">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-[rgba(255,255,255,0.11)] text-white shadow-sm sm:h-14 sm:w-14">
-                        <pillar.icon className="h-6 w-6 sm:h-7 sm:w-7" />
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3">
+                        <pillar.icon className="h-7 w-7 text-white" />
+                        <h3 className="text-base font-semibold text-white">{pillar.title}</h3>
                       </div>
+                      <p className="mt-2 text-sm leading-6 text-white/76">{pillar.description}</p>
                     </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-base font-semibold text-white">{pillar.title}</h3>
-                    <p className="mt-1 text-sm leading-6 text-white/76">{pillar.description}</p>
                   </div>
                 </article>
               ))}
+
             </div>
           </div>
-        </div>
-
-        <div className="grid grid-cols-2 border-t border-white/10 sm:grid-cols-4">
-          {focusPoints.map((item) => (
-            <div key={item.title} className="flex flex-col items-center gap-2 border-r border-white/10 px-4 py-5 text-center last:border-r-0">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[var(--color-primary)] shadow-sm transition-transform duration-300 hover:scale-105">
-                <item.icon className="h-5 w-5" />
-              </div>
-              <p className="text-sm font-semibold text-white">{item.title}</p>
-              <p className="text-xs text-white/68">{item.note}</p>
-            </div>
-          ))}
         </div>
       </div>
     </section>

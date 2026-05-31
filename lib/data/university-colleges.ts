@@ -50,6 +50,76 @@ export const universityColleges: Record<string, CollegeEntry[]> = {
     { name: 'PU-affiliated Management Colleges (selected)', location: 'Gandaki Province', note: 'Regional management and business colleges' },
     { name: 'PU-affiliated Engineering Colleges (selected)', location: 'Gandaki Province', note: 'Applied engineering partners' },
   ],
+
+  purbanchal: [
+    { name: 'School of Engineering', location: 'Biratnagar', note: 'Technical and applied engineering programs' },
+    { name: 'Faculty of Medicine', location: 'Biratnagar', note: 'Healthcare and clinical study pathways' },
+    { name: 'Faculty of Management', location: 'Biratnagar', note: 'Business, commerce, and administration study' },
+    { name: 'Faculty of Science and Technology', location: 'Biratnagar', note: 'Science-led learning and lab-based programs' },
+    { name: 'Faculty of Humanities and Social Sciences', location: 'Biratnagar', note: 'Social science and general academic study' },
+  ],
+
+  lumbini: [
+    { name: 'Faculty of Buddhist Studies', location: 'Rupandehi', note: 'History, heritage, and philosophy-focused study' },
+    { name: 'Faculty of Humanities', location: 'Rupandehi', note: 'Arts and interdisciplinary learning' },
+    { name: 'Faculty of Management', location: 'Rupandehi', note: 'Applied business and administration programs' },
+    { name: 'Tourism and Hospitality units', location: 'Rupandehi', note: 'Career-oriented hospitality study' },
+    { name: 'Education support units', location: 'Rupandehi', note: 'Teacher education and community learning' },
+  ],
+
+  midwestern: [
+    { name: 'School of Science and Technology', location: 'Surkhet', note: 'STEM-focused academic pathways' },
+    { name: 'Faculty of Education', location: 'Surkhet', note: 'Teacher training and pedagogy' },
+    { name: 'Faculty of Management', location: 'Surkhet', note: 'Business and commerce pathways' },
+    { name: 'Faculty of Agriculture', location: 'Surkhet', note: 'Agriculture and environmental learning' },
+    { name: 'Faculty of Humanities and Social Sciences', location: 'Surkhet', note: 'General and social science study' },
+  ],
+
+  'nepal-sanskrit': [
+    { name: 'Faculty of Sanskrit Studies', location: 'Dang', note: 'Classical Sanskrit language and literature' },
+    { name: 'Faculty of Philosophy', location: 'Dang', note: 'Traditional and contemporary philosophical study' },
+    { name: 'Faculty of Religion and Culture', location: 'Dang', note: 'Heritage, culture, and textual study' },
+    { name: 'Faculty of Education', location: 'Dang', note: 'Teacher preparation in classical disciplines' },
+    { name: 'Research and translation units', location: 'Dang', note: 'Text preservation and academic research' },
+  ],
+
+  'nepal-open': [
+    { name: 'Online learning center', location: 'Lalitpur', note: 'Flexible remote learning support' },
+    { name: 'Assessment and exam support', location: 'Nationwide', note: 'Distance education delivery and evaluation' },
+    { name: 'Academic support services', location: 'Nationwide', note: 'Tutoring and student guidance' },
+    { name: 'Regional facilitation points', location: 'Nationwide', note: 'Student access support across Nepal' },
+  ],
+
+  'agriculture-forestry': [
+    { name: 'Institute of Agriculture and Animal Science', location: 'Rampur', note: 'Agriculture and livestock science' },
+    { name: 'Institute of Forestry', location: 'Rampur', note: 'Forestry, environment, and conservation study' },
+    { name: 'Veterinary and animal health units', location: 'Rampur', note: 'Animal health and husbandry training' },
+    { name: 'Food science and agribusiness labs', location: 'Rampur', note: 'Applied food and production study' },
+  ],
+
+  'far-western': [
+    { name: 'Faculty of Education', location: 'Dhangadhi', note: 'Teacher education and pedagogy' },
+    { name: 'Faculty of Management', location: 'Dhangadhi', note: 'Business, commerce, and administration' },
+    { name: 'Faculty of Science and Technology', location: 'Dhangadhi', note: 'Science and technical programs' },
+    { name: 'Faculty of Humanities and Social Sciences', location: 'Dhangadhi', note: 'Arts and social science study' },
+    { name: 'Regional study centers', location: 'Sudurpashchim', note: 'Broader access for students across the region' },
+  ],
+
+  'nepal-med': [
+    { name: 'Teaching hospital wing', location: 'Kathmandu', note: 'Clinical rotations and bedside learning' },
+    { name: 'School of Medicine', location: 'Kathmandu', note: 'Medical education and supervised practice' },
+    { name: 'School of Nursing', location: 'Kathmandu', note: 'Nursing preparation and patient care training' },
+    { name: 'Public health and diagnostics units', location: 'Kathmandu', note: 'Community health and laboratory learning' },
+    { name: 'Research and clinical support units', location: 'Kathmandu', note: 'Research-led healthcare training' },
+  ],
+
+  bpkihs: [
+    { name: 'School of Medicine', location: 'Dharan', note: 'Clinical medicine and hospital-based training' },
+    { name: 'School of Nursing', location: 'Dharan', note: 'Undergraduate and postgraduate nursing pathways' },
+    { name: 'School of Public Health and Community Medicine', location: 'Dharan', note: 'Population health and preventive care programs' },
+    { name: 'School of Allied Health Sciences', location: 'Dharan', note: 'Laboratory, imaging, and allied health disciplines' },
+    { name: 'Research and training departments', location: 'Dharan', note: 'Specialized health sciences research support' },
+  ],
 }
 
 export default universityColleges

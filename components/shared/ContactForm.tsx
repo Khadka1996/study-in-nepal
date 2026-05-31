@@ -26,6 +26,7 @@ interface ToastState {
 }
 
 const subjectOptions: Array<ContactFormValues['subject']> = ['Admissions', 'Universities', 'Courses', 'Booking', 'Other']
+const contactRecipientEmail = 'directorbusiness@icecollege.edu.np'
 
 export default function ContactForm(): JSX.Element {
   const [toast, setToast] = useState<ToastState | null>(null)
@@ -59,20 +60,35 @@ export default function ContactForm(): JSX.Element {
     setToast(null)
 
     try {
-      await sendEmail({
+      const delivery = await sendEmail({
         templateParams: {
+          to_email: contactRecipientEmail,
+          recipient_email: contactRecipientEmail,
+          reply_to: values.email,
+          subject: `New contact request: ${values.subject}`,
+          message: [
+            `Full name: ${values.fullName}`,
+            `Email: ${values.email}`,
+            `Phone: ${values.phone}`,
+            `Subject: ${values.subject}`,
+            `Message: ${values.message}`,
+          ].join('\n'),
           full_name: values.fullName,
           email: values.email,
           phone: values.phone,
-          subject: values.subject,
-          message: values.message,
           form_type: 'contact',
         },
       })
 
       reset()
       trackContactFormSubmitted()
-      setToast({ message: "Message sent! We'll reply within 24 hours.", type: 'success' })
+      setToast({
+        message:
+          delivery.mode === 'gmail-compose'
+            ? `Gmail draft opened for ${delivery.recipient}. Please send it from Gmail.`
+            : "Message sent! We'll reply within 24 hours.",
+        type: 'success',
+      })
     } catch (error: unknown) {
       logger.error('Contact form submission failed', error)
       setToast({ message: 'Something went wrong. Please retry your message.', type: 'error' })

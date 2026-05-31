@@ -10,10 +10,11 @@ import WhyNepalSection from '@/components/home/WhyNepalSection'
 export const metadata: Metadata = {
   title: 'Home | Study in Nepal',
   description: 'Discover universities, colleges, and study opportunities in Nepal with a premium education portal built for international students.',
+  keywords: ['study in nepal', 'universities in nepal', 'colleges in nepal', 'study abroad nepal', 'nepal education'],
   openGraph: {
     title: 'Home | Study in Nepal',
     description: 'Discover universities, colleges, and study opportunities in Nepal with a premium education portal built for international students.',
-    images: ['/og/home.jpg'],
+    images: ['https://studyinnepal.com/og/home.jpg'],
   },
   alternates: {
     canonical: 'https://studyinnepal.com/',

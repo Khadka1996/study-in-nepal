@@ -79,7 +79,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Why Study in Nepal | Study in Nepal',
     description: 'Explore 10 strong reasons to study in Nepal, including affordability, quality institutions, student support, and career pathways.',
-    images: ['/images/hero-study-nepal.png'],
+    images: ['https://studyinnepal.com/images/hero-study-nepal.png'],
   },
   alternates: {
     canonical: 'https://studyinnepal.com/why-study-nepal',
@@ -147,6 +147,55 @@ export default function WhyStudyNepalPage(): JSX.Element {
               <p className="mt-2 text-sm leading-6 text-slate-600">{benefit.description}</p>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="mt-8 rounded-[2rem] border border-[rgba(15,42,95,0.1)] bg-white p-6 shadow-soft sm:p-8">
+        <h2 className="text-2xl font-semibold text-[var(--color-dark)] sm:text-3xl">Campus and Student Life in Nepal</h2>
+        <p className="mt-3 text-sm leading-6 text-slate-600 max-w-3xl">Real student experiences and welcoming campus communities — here are a few highlights.</p>
+
+        <div className="mt-6 grid gap-6 md:grid-cols-2 items-start">
+          <div className="space-y-4">
+            <div className="flex items-start gap-4">
+              <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-[var(--color-secondary)]/10 text-[var(--color-secondary)]">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
+                  <path d="M12 1a3 3 0 00-3 3v1H6a2 2 0 00-2 2v3h16V7a2 2 0 00-2-2h-3V4a3 3 0 00-3-3zM4 14v3a3 3 0 003 3h10a3 3 0 003-3v-3H4z" />
+                </svg>
+              </span>
+              <div>
+                <h3 className="text-base font-semibold text-[var(--color-dark)]">Affordable and strategic in Nepal</h3>
+                <p className="mt-1 text-sm text-slate-600">Nepal offers a practical balance of tuition, living cost, and academic access for international students.</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+              <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-[var(--color-secondary)]/10 text-[var(--color-secondary)]">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
+                  <path d="M12 2l7 4v6c0 5-3.58 9.74-7 11-3.42-1.26-7-6-7-11V6l7-4z" />
+                </svg>
+              </span>
+              <div>
+                <h3 className="text-base font-semibold text-[var(--color-dark)]">Real-world campus culture in Nepal</h3>
+                <p className="mt-1 text-sm text-slate-600">Students often find smaller, more personal campuses where support feels direct and human.</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+              <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-[var(--color-secondary)]/10 text-[var(--color-secondary)]">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
+                  <path d="M4 4h16v2H4V4zm2 6h12v9H6v-9zm3 2v5h2v-5H9z" />
+                </svg>
+              </span>
+              <div>
+                <h3 className="text-base font-semibold text-[var(--color-dark)]">Career-minded pathways in Nepal</h3>
+                <p className="mt-1 text-sm text-slate-600">Programs in business, hospitality, IT, and health can connect to employability and long-term plans.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-[1rem] overflow-hidden border border-[rgba(15,42,95,0.06)]">
+            <Image src="/images/student-life-in-nepal.jpg" alt="Students on campus in Nepal" width={900} height={600} className="w-full object-cover" />
+          </div>
         </div>
       </section>
 

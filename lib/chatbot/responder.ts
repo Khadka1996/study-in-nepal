@@ -1,4 +1,4 @@
-import { detectIntent, getIntentLabel, normalize, scoreFAQ } from '@/lib/chatbot/matcher'
+import { detectIntent, normalize, scoreFAQ } from '@/lib/chatbot/matcher'
 import type { ChatbotData, Career, College, Course, FAQItem, University } from '@/types/chatbot'
 
 function listItems<T>(items: T[], formatter: (item: T, index: number) => string, limit = 5): string {
@@ -31,11 +31,67 @@ function formatFaq(faq: FAQItem): string {
 }
 
 function findUniversityByQuery(universities: University[], query: string): University | null {
-  return universities.find((university) => query.includes(normalize(university.name))) ?? null
+  const directMatch = universities.find((university) => query.includes(normalize(university.name)))
+  if (directMatch) {
+    return directMatch
+  }
+
+  const aliases: Record<string, string[]> = {
+    'tribhuvan university': ['tu', 'tribhuvan', 't.u.'],
+    'kathmandu university': ['ku', 'kathmandu'],
+    'pokhara university': ['pu', 'pokhara'],
+    'purbanchal university': ['purbanchal', 'purbu'],
+    'nepal open university': ['nou', 'open university'],
+    'mid-west university': ['mwu', 'mid western', 'mid-west'],
+    'far-western university': ['fwu', 'far western', 'far-western'],
+    'lumbini buddhist university': ['lbu', 'lumbini'],
+    'agriculture and forestry university': ['afu', 'agriculture university', 'faculty of agriculture'],
+    'nepal medical college': ['nmc', 'nepal medical'],
+    'b.p. koirala institute of health sciences': ['bpkihs', 'bp koirala', 'b p koirala'],
+  }
+
+  return universities.find((university) => {
+    const values = aliases[university.name.toLowerCase()] ?? []
+    return values.some((alias) => query === normalize(alias) || query.includes(normalize(alias)))
+  }) ?? null
 }
 
 function findCourseByQuery(courses: Course[], query: string): Course | null {
   return courses.find((course) => query.includes(normalize(course.name))) ?? null
+}
+
+function findCollegeByQuery(colleges: College[], query: string): College | null {
+  const directMatch = colleges.find((college) => query.includes(normalize(college.name)))
+  if (directMatch) {
+    return directMatch
+  }
+
+  const aliases: Record<string, string[]> = {
+    'ratna rajya laxmi campus': ['ratna rajya', 'ratnarajya', 'ratna rajyalaxmi'],
+    'ratna rajyalaxmi campus': ['ratna rajya', 'ratnarajya', 'ratna rajyalaxmi'],
+    'padma kanya multiple campus': ['padma kanya', 'pk campus', 'padmakanya'],
+  }
+
+  return colleges.find((college) => {
+    const values = aliases[college.name.toLowerCase()] ?? []
+    return values.some((alias) => query === normalize(alias) || query.includes(normalize(alias)))
+  }) ?? null
+}
+
+function formatWebsiteDetails(data: ChatbotData): string {
+  const contactLines = data.general.contactInfo.map((item) => `- ${item}`).join('\n')
+  return [
+    'Study in Nepal helps students compare universities, colleges, courses, career options, and scholarship guidance in Nepal.',
+    '',
+    'What you can ask me:',
+    '- Show universities',
+    '- Show colleges',
+    '- Tell me about a university by name',
+    '- Ask about fees, visa, scholarships, or facilities',
+    '',
+    'Contact details:',
+    contactLines,
+  ].join('\n')
 }
 
 export async function getReply(message: string, data: ChatbotData): Promise<string> {
@@ -96,6 +152,31 @@ export async function getReply(message: string, data: ChatbotData): Promise<stri
         'If you tell me your background, I can suggest a stronger fit.',
       ].join('\n')
 
+    case 'service_info':
+      return [
+        'We help with university selection, course planning, admissions support, consultation booking, and follow-up.',
+        'You can ask me to show universities, colleges, courses, facilities, scholarships, visa notes, or contact details.',
+        'If you want, I can also recommend a study path based on your subject interest.',
+      ].join(' ')
+
+    case 'contact_info':
+      return [
+        'Phone: +977 9860540054',
+        'WhatsApp: +977 9860540054',
+        'Email: directorbusiness@icecollege.edu.np',
+        'Location: New Baneshwor, Kathmandu, Nepal',
+        'Use WhatsApp or the contact page for direct help.',
+      ].join('\n')
+
+    case 'college_detail': {
+      const college = findCollegeByQuery(data.colleges, intent.query) ?? data.colleges[0]
+      return [
+        `${college.name}:`,
+        formatCollege(college),
+        'I can compare this college with nearby universities or list its related courses.',
+      ].join('\n')
+    }
+
     case 'faq_match': {
       const bestFaq = data.faqs
         .map((faq) => ({ faq, score: scoreFAQ(intent.query, faq) }))
@@ -132,8 +213,7 @@ export async function getReply(message: string, data: ChatbotData): Promise<stri
     default:
       return [
         'I could not confidently match that question yet.',
-        'Try asking about universities, colleges, courses, careers, visa, cost, or a specific FAQ topic.',
-        `Detected intent: ${getIntentLabel(intent.type)}.`,
+        formatWebsiteDetails(data),
       ].join(' ')
   }
 

@@ -7,11 +7,12 @@ import { buildUniversityWhatsAppMessage, buildWhatsAppLink } from '@/lib/whatsap
 
 export const metadata: Metadata = {
   title: 'Universities | Study in Nepal',
-  description: 'Compare universities in Nepal with a focus on quality, recognition, and international student fit.',
+  description: 'Compare universities in Nepal with a clearer view of public institutions, specialist colleges, and student fit.',
+  keywords: ['universities in nepal', 'nepal university list', 'study in nepal universities', 'higher education nepal'],
   openGraph: {
     title: 'Universities | Study in Nepal',
-    description: 'Compare universities in Nepal with a focus on quality, recognition, and international student fit.',
-    images: ['/og/universities.jpg'],
+    description: 'Compare universities in Nepal with a clearer view of public institutions, specialist colleges, and student fit.',
+    images: ['https://studyinnepal.com/og/universities.jpg'],
   },
   alternates: {
     canonical: 'https://studyinnepal.com/universities',
@@ -29,15 +30,15 @@ export default function UniversitiesPage(): JSX.Element {
       <section className="overflow-hidden rounded-[2rem] border border-[var(--color-light)] bg-white shadow-soft">
         <div className="bg-[linear-gradient(135deg,rgba(8,26,58,1),rgba(19,47,104,1))] px-6 py-12 text-white sm:px-10 lg:px-12 lg:py-14">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[rgba(255,255,255,0.7)]">Universities</p>
-          <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl">Explore every university with a fast path to logos, programs, and detail pages.</h1>
+          <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl">Explore Nepal’s universities through a cleaner, more complete directory.</h1>
           <p className="mt-4 max-w-3xl text-base leading-7 text-white/78">
-            This directory surfaces the full list in one place so students can compare options without jumping between pages.
+            Compare public universities, specialist institutions, and flexible study options without jumping between pages.
           </p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
             <article className="rounded-3xl border border-white/10 bg-white/8 px-5 py-4 backdrop-blur">
               <div className="text-3xl font-semibold">{universityCount}</div>
-              <p className="mt-1 text-sm text-white/72">Universities listed</p>
+              <p className="mt-1 text-sm text-white/72">University profiles listed</p>
             </article>
             <article className="rounded-3xl border border-white/10 bg-white/8 px-5 py-4 backdrop-blur">
               <div className="text-3xl font-semibold">{totalPrograms}+</div>
@@ -103,7 +104,7 @@ export default function UniversitiesPage(): JSX.Element {
                           Get details
                         </a>
                         <Link
-                          href={`/universities/${university.id}#colleges`}
+                          href={`/universities/${university.id}`}
                           className="inline-flex rounded-full border border-[var(--color-secondary)] px-5 py-3 text-sm font-semibold text-[var(--color-dark)] transition hover:bg-[rgba(200,16,46,0.06)] focus-ring"
                         >
                           View colleges

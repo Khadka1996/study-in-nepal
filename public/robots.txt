@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://studyinnepal.com/sitemap.xml
+
+# Crawl-delay can be set if needed for specific crawlers
+# Crawl-delay: 10
