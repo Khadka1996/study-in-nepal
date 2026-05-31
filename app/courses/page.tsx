@@ -20,7 +20,7 @@ export const dynamic = 'force-static'
 
 export default function CoursesPage(): JSX.Element {
   return (
-    <main className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <main className="mx-auto w-full max-w-7xl px-2 py-16 sm:px-6 lg:px-8">
       <Script id="breadcrumb-courses" type="application/ld+json">
         {JSON.stringify({
           '@context': 'https://schema.org',

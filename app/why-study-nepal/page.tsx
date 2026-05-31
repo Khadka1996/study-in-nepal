@@ -90,8 +90,8 @@ export const dynamic = 'force-static'
 
 export default function WhyStudyNepalPage(): JSX.Element {
   return (
-    <main className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-      <section className="overflow-hidden rounded-[2rem] border border-[rgba(15,42,95,0.12)] bg-[linear-gradient(140deg,#081a3a_0%,#0f2a5f_50%,#143b7c_100%)] p-7 text-white shadow-[0_24px_70px_rgba(8,26,58,0.2)] sm:p-10">
+    <main className="mx-auto w-full max-w-7xl px-1.5 py-12 sm:px-6 lg:px-8">
+      <section className="overflow-hidden rounded-[2rem] border border-[rgba(15,42,95,0.12)] bg-[linear-gradient(140deg,#081a3a_0%,#0f2a5f_50%,#143b7c_100%)] p-5 text-white shadow-[0_24px_70px_rgba(8,26,58,0.2)] sm:p-10">
         <p className="text-xs font-semibold uppercase tracking-[0.32em] text-white/70">Why Study in Nepal</p>
         <h1 className="mt-4 max-w-3xl text-3xl font-semibold leading-tight sm:text-5xl">Experience top-notch education, vibrant culture, and limitless possibilities in one of South Asia\'s fastest-growing education destinations.</h1>
         <p className="mt-5 max-w-3xl text-sm leading-7 text-white/80 sm:text-base">
@@ -108,14 +108,14 @@ export default function WhyStudyNepalPage(): JSX.Element {
         </div>
       </section>
 
-      <section className="mt-8 rounded-[2rem] border border-[rgba(15,42,95,0.1)] bg-white p-6 shadow-soft sm:p-8">
+      <section className="mt-8 rounded-[2rem] border border-[rgba(15,42,95,0.1)] bg-white p-4 shadow-soft sm:p-8">
         <h2 className="text-2xl font-semibold text-[var(--color-dark)] sm:text-3xl">Nepal's Academic Infrastructure</h2>
         <p className="mt-3 text-sm leading-6 text-slate-600 max-w-3xl">A structured foundation section that feels editorial, balanced, and more premium than a stack of isolated cards. A cleaner path for students who want clarity, not clutter.</p>
 
         <div className="mt-6 grid gap-4 md:grid-cols-2 items-start">
           <article className="rounded-[1rem] overflow-hidden border border-[rgba(15,42,95,0.06)]">
             <Image src="/images/Renovation-and-Expansion-of-Tri-Chandra-Campus.jpg" alt="Tri-Chandra Multiple Campus" width={900} height={540} className="w-full object-cover" />
-            <div className="p-4">
+            <div className="p-3">
               <h3 className="text-lg font-semibold text-[var(--color-dark)]">Tri-Chandra Multiple Campus</h3>
               <p className="mt-2 text-sm text-slate-600">Historic campus offering humanities, social sciences and a deep academic tradition.</p>
             </div>
@@ -123,7 +123,7 @@ export default function WhyStudyNepalPage(): JSX.Element {
 
           <article className="rounded-[1rem] overflow-hidden border border-[rgba(15,42,95,0.06)]">
             <Image src="/images/pulchowk-engineering.jpeg" alt="Pulchowk Campus" width={900} height={540} className="w-full object-cover" />
-            <div className="p-4">
+            <div className="p-3">
               <h3 className="text-lg font-semibold text-[var(--color-dark)]">Pulchowk Campus</h3>
               <p className="mt-2 text-sm text-slate-600">One of Nepal's premier engineering campuses — practical, well-equipped, and industry-facing.</p>
             </div>
@@ -138,11 +138,11 @@ export default function WhyStudyNepalPage(): JSX.Element {
         </div>
       </section>
 
-      <section className="mt-8 rounded-[2rem] border border-[rgba(15,42,95,0.1)] bg-white p-6 shadow-soft sm:p-8">
+      <section className="mt-8 rounded-[2rem] border border-[rgba(15,42,95,0.1)] bg-white p-4 shadow-soft sm:p-8">
         <h2 className="text-2xl font-semibold text-[var(--color-dark)] sm:text-3xl">Benefits of Studying in Nepal</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           {benefits.map((benefit) => (
-            <article key={benefit.title} className="rounded-[1.25rem] border border-[rgba(15,42,95,0.1)] bg-[rgba(15,42,95,0.02)] p-5">
+            <article key={benefit.title} className="rounded-[1.25rem] border border-[rgba(15,42,95,0.1)] bg-[rgba(15,42,95,0.02)] p-4">
               <h3 className="text-lg font-semibold text-[var(--color-dark)]">{benefit.title}</h3>
               <p className="mt-2 text-sm leading-6 text-slate-600">{benefit.description}</p>
             </article>
@@ -150,7 +150,7 @@ export default function WhyStudyNepalPage(): JSX.Element {
         </div>
       </section>
 
-      <section className="mt-8 rounded-[2rem] border border-[rgba(15,42,95,0.1)] bg-white p-6 shadow-soft sm:p-8">
+      <section className="mt-8 rounded-[2rem] border border-[rgba(15,42,95,0.1)] bg-white p-4 shadow-soft sm:p-8">
         <h2 className="text-2xl font-semibold text-[var(--color-dark)] sm:text-3xl">Campus and Student Life in Nepal</h2>
         <p className="mt-3 text-sm leading-6 text-slate-600 max-w-3xl">Real student experiences and welcoming campus communities — here are a few highlights.</p>
 
@@ -199,17 +199,13 @@ export default function WhyStudyNepalPage(): JSX.Element {
         </div>
       </section>
 
-      <section className="mt-8 rounded-[2rem] border border-[rgba(15,42,95,0.1)] bg-white p-6 shadow-soft sm:p-8">
+      <section className="mt-8 rounded-[2rem] border border-[rgba(15,42,95,0.1)] bg-white p-4 shadow-soft sm:p-8">
         <h2 className="text-2xl font-semibold text-[var(--color-dark)] sm:text-3xl">Popular Destinations in Nepal</h2>
         <p className="mt-3 text-sm leading-6 text-slate-600">Explore the most preferred student cities and what makes each destination unique.</p>
 
         <div className="mt-6 space-y-3">
           {destinations.map((city, index) => (
-            <details
-              key={city.name}
-              open={index === 0}
-              className="group rounded-[1.2rem] border border-[rgba(15,42,95,0.1)] bg-[rgba(15,42,95,0.02)] px-4 py-3"
-            >
+            <details key={city.name} open={index === 0} className="group rounded-[1.2rem] border border-[rgba(15,42,95,0.1)] bg-[rgba(15,42,95,0.02)] px-3 py-3">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold text-[var(--color-dark)]">
                 {city.name}
                 <span className="text-[var(--color-secondary)] transition group-open:rotate-180">▼</span>
@@ -221,7 +217,7 @@ export default function WhyStudyNepalPage(): JSX.Element {
 
         <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {destinations.map((city) => (
-            <article key={`card-${city.name}`} className="rounded-[1.2rem] border border-[rgba(15,42,95,0.1)] bg-white p-4">
+            <article key={`card-${city.name}`} className="rounded-[1.2rem] border border-[rgba(15,42,95,0.1)] bg-white p-3">
               <h3 className="text-base font-semibold text-[var(--color-dark)]">{city.name}</h3>
               <p className="mt-2 text-sm leading-6 text-slate-600">{city.description}</p>
             </article>
@@ -229,14 +225,14 @@ export default function WhyStudyNepalPage(): JSX.Element {
         </div>
       </section>
 
-      <section className="mt-8 rounded-[2rem] border border-[rgba(15,42,95,0.1)] bg-white p-6 shadow-soft sm:p-8">
+      <section className="mt-8 rounded-[2rem] border border-[rgba(15,42,95,0.1)] bg-white p-4 shadow-soft sm:p-8">
         <h2 className="text-2xl font-semibold text-[var(--color-dark)] sm:text-3xl">Ready to Start Your Journey?</h2>
         <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-600">
           Begin your application process today and take the first step toward studying in Nepal.
         </p>
         <div className="mt-5 grid gap-3 sm:grid-cols-2">
           {journeySteps.map((step) => (
-            <div key={step} className="rounded-[1rem] border border-[rgba(15,42,95,0.1)] bg-[rgba(15,42,95,0.02)] px-4 py-3 text-sm font-medium text-[var(--color-dark)]">
+            <div key={step} className="rounded-[1rem] border border-[rgba(15,42,95,0.1)] bg-[rgba(15,42,95,0.02)] px-3 py-3 text-sm font-medium text-[var(--color-dark)]">
               {step}
             </div>
           ))}
@@ -251,12 +247,12 @@ export default function WhyStudyNepalPage(): JSX.Element {
         </div>
       </section>
 
-      <section className="mt-8 rounded-[2rem] border border-[rgba(15,42,95,0.1)] bg-white p-6 shadow-soft sm:p-8">
+      <section className="mt-8 rounded-[2rem] border border-[rgba(15,42,95,0.1)] bg-white p-4 shadow-soft sm:p-8">
         <h2 className="text-2xl font-semibold text-[var(--color-dark)] sm:text-3xl">10 Reasons to Study in Nepal</h2>
         <p className="mt-3 text-sm leading-6 text-slate-600">A clear point-wise summary without images, as requested.</p>
         <ol className="mt-6 grid gap-3 sm:grid-cols-2">
           {reasons.map((reason, index) => (
-            <li key={reason} className="flex items-start gap-3 rounded-[1rem] border border-[rgba(15,42,95,0.1)] bg-[rgba(15,42,95,0.02)] px-4 py-3 text-sm leading-6 text-slate-700 transition hover:border-[rgba(200,16,46,0.25)] hover:bg-white">
+            <li key={reason} className="flex items-start gap-3 rounded-[1rem] border border-[rgba(15,42,95,0.1)] bg-[rgba(15,42,95,0.02)] px-3 py-3 text-sm leading-6 text-slate-700 transition hover:border-[rgba(200,16,46,0.25)] hover:bg-white">
               <span className="inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)] text-xs font-semibold text-white">
                 {index + 1}
               </span>

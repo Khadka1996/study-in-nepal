@@ -100,7 +100,7 @@ export default function Navbar(): JSX.Element {
 
   return (
     <header className="sticky top-0 z-[9999] border-b border-[rgba(200,16,46,0.12)] bg-white">
-      <nav className="relative mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <nav className="relative mx-auto flex max-w-7xl items-center justify-between gap-3 px-2 py-3 sm:px-6 lg:px-8">
         <div className="flex items-center gap-6">
           <Link href="/" className="group flex items-center gap-3 font-semibold text-[var(--color-dark)]">
             <div className="relative h-11 w-11 overflow-hidden rounded-2xl shadow-[0_12px_24px_rgba(8,26,58,0.18)]">
@@ -282,7 +282,7 @@ export default function Navbar(): JSX.Element {
 
       {isMenuOpen && (
         <div className="border-t border-[rgba(200,16,46,0.14)] bg-white xl:hidden">
-          <div onPointerUp={handleMobilePointerUp} className="mx-auto max-h-[calc(100dvh-5rem)] max-w-7xl overflow-y-auto overscroll-contain px-4 py-4 touch-pan-y sm:px-6 lg:px-8">
+          <div onPointerUp={handleMobilePointerUp} className="mx-auto max-h-[calc(100dvh-5rem)] max-w-7xl overflow-y-auto overscroll-contain px-2 py-4 touch-pan-y sm:px-6 lg:px-8">
             <a href="/" className="block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-[rgba(15,42,95,0.06)]">
               Home
             </a>

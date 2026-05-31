@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function InstitutionalBookingPage(): JSX.Element {
   return (
-    <main className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <main className="mx-auto w-full max-w-7xl px-2 py-12 sm:px-6 lg:px-8">
       <Script id="breadcrumb-booking-institutional" type="application/ld+json">
         {JSON.stringify({
           '@context': 'https://schema.org',
@@ -25,7 +25,7 @@ export default function InstitutionalBookingPage(): JSX.Element {
           ],
         })}
       </Script>
-      <section className="grid gap-8 rounded-[2rem] border border-[var(--color-light)] bg-white p-8 shadow-soft lg:grid-cols-[0.9fr_1.1fr] lg:p-12">
+      <section className="grid gap-6 rounded-[2rem] border border-[var(--color-light)] bg-white p-5 shadow-soft sm:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:p-12">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">Institutional Inquiry</p>
           <h1 className="mt-4 text-4xl font-semibold text-[var(--color-dark)]">Institutional partnership and inquiry requests.</h1>
@@ -42,7 +42,7 @@ export default function InstitutionalBookingPage(): JSX.Element {
           </div>
         </div>
 
-        <div className="rounded-[1.75rem] border border-slate-200 bg-slate-50 p-6">
+        <div className="rounded-[1.75rem] border border-slate-200 bg-slate-50 p-4 sm:p-6">
           <BookingForm inquiryType="institutional" />
         </div>
       </section>

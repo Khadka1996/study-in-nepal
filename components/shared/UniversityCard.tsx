@@ -16,7 +16,7 @@ export default function UniversityCard({ name, location, description, imageSrc, 
   const whatsappLink = buildWhatsAppLink(buildUniversityWhatsAppMessage(name))
 
   return (
-    <article className="flex h-full min-h-[420px] flex-col overflow-hidden rounded-[2rem] border border-[rgba(15,42,95,0.12)] bg-white shadow-[0_20px_50px_rgba(8,26,58,0.08)]">
+    <article className="flex h-full min-h-[380px] flex-col overflow-hidden rounded-[2rem] border border-[rgba(15,42,95,0.12)] bg-white shadow-[0_20px_50px_rgba(8,26,58,0.08)]">
       <Image
         src={imageSrc}
         alt={`${name} logo`}
@@ -24,13 +24,13 @@ export default function UniversityCard({ name, location, description, imageSrc, 
         height={440}
         sizes="(max-width: 768px) 100vw, 50vw"
         loading="lazy"
-        className="h-64 w-full bg-white object-contain p-6"
+        className="h-56 w-full bg-white object-contain p-4 sm:h-64 sm:p-6"
       />
-      <div className="flex flex-1 flex-col p-6">
+      <div className="flex flex-1 flex-col p-4 sm:p-6">
         <p className="text-xs font-semibold uppercase tracking-[0.26em] text-[var(--color-secondary)]">{location}</p>
         <h3 className="mt-3 text-2xl font-semibold text-[var(--color-dark)]">{name}</h3>
         <p className="mt-3 text-sm leading-6 text-slate-600">{description}</p>
-        <div className="mt-auto pt-6 flex items-center justify-between gap-4">
+        <div className="mt-auto flex items-center justify-between gap-3 pt-5 sm:gap-4 sm:pt-6">
           <a
             href={whatsappLink}
             target="_blank"

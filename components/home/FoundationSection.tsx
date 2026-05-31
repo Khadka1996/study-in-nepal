@@ -80,7 +80,7 @@ const pillars = [
 
 export default function FoundationSection(): JSX.Element {
   return (
-    <section className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+    <section className="mx-auto w-full max-w-7xl px-2 py-10 sm:px-6 lg:px-8">
       <div className="animate-fade-up relative overflow-hidden rounded-[2rem] border border-[rgba(15,42,95,0.12)] bg-[linear-gradient(180deg,#081a3a_0%,#0b214d_46%,#132f68_100%)] text-white shadow-[0_24px_60px_rgba(8,26,58,0.18)]">
         <Image
           src="/images/bg-students.png"
@@ -92,7 +92,7 @@ export default function FoundationSection(): JSX.Element {
         />
         <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(8,26,58,0.66)_0%,rgba(11,33,77,0.5)_55%,rgba(19,47,104,0.64)_100%)]" />
 
-        <div className="relative px-6 py-8 sm:px-8 sm:py-10">
+        <div className="relative px-3 py-8 sm:px-8 sm:py-10">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[rgba(255,255,255,0.68)]">Global reach</p>
             <h2 className="mt-3 text-3xl font-semibold sm:text-4xl">Nepal&apos;s Academic Infrastructure</h2>

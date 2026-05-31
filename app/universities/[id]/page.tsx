@@ -107,7 +107,7 @@ export default function UniversityPage({ params }: { params: { id: string } }): 
           ) : null}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(200,16,46,0.22),transparent_28%),linear-gradient(180deg,rgba(8,26,58,0.10)_0%,rgba(8,26,58,0.72)_58%,rgba(8,26,58,0.94)_100%)]" />
 
-          <div className="relative mx-auto flex min-h-[36rem] w-full max-w-7xl items-end px-6 pb-10 sm:min-h-[40rem] sm:px-8 sm:pb-12 lg:items-center lg:px-10 lg:pb-12">
+          <div className="relative mx-auto flex min-h-[36rem] w-full max-w-7xl items-end px-4 pb-8 sm:min-h-[40rem] sm:px-8 sm:pb-12 lg:items-center lg:px-10 lg:pb-12">
             <div className="max-w-4xl">
               <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-white/78">
                 <span className="rounded-full border border-white/18 bg-white/10 px-4 py-1.5 backdrop-blur-sm">University profile</span>
@@ -148,9 +148,9 @@ export default function UniversityPage({ params }: { params: { id: string } }): 
         </div>
 
         <div className="bg-[var(--color-light)] py-10 sm:py-12 lg:py-14">
-          <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10">
+          <div className="mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-10">
             <div className="grid gap-6 lg:grid-cols-1">
-              <div className="rounded-[1.75rem] border border-white bg-white p-6 shadow-sm sm:p-7">
+              <div className="rounded-[1.75rem] border border-white bg-white p-4 shadow-sm sm:p-7">
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--color-primary)]">Programs</p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {university.programs.map((program) => (
@@ -161,7 +161,7 @@ export default function UniversityPage({ params }: { params: { id: string } }): 
                 </div>
               </div>
 
-              <div className="rounded-[1.75rem] border border-white bg-white p-6 shadow-sm sm:p-7">
+              <div className="rounded-[1.75rem] border border-white bg-white p-4 shadow-sm sm:p-7">
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--color-primary)]">What you get</p>
                 <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-700">
                   <li>• Overview of the university and its study focus</li>
@@ -175,14 +175,14 @@ export default function UniversityPage({ params }: { params: { id: string } }): 
 
         {faqs.length > 0 && (
           <div className="border-t border-[var(--color-light)] bg-white py-10 sm:py-12 lg:py-14">
-            <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10">
+            <div className="mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-10">
               <div className="max-w-4xl">
                 <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">Frequently asked questions</p>
                 <h2 className="mt-3 text-2xl font-semibold text-[var(--color-dark)]">FAQs about {university.name}</h2>
 
                 <div className="mt-6 space-y-4">
                   {faqs.map((faq) => (
-                    <div key={faq.question} className="rounded-lg border border-[var(--color-light)] bg-white p-4">
+                    <div key={faq.question} className="rounded-lg border border-[var(--color-light)] bg-white p-3 sm:p-4">
                       <p className="font-semibold text-[var(--color-dark)]">{faq.question}</p>
                       <p className="mt-2 text-sm text-slate-700">{faq.answer}</p>
                     </div>
@@ -194,7 +194,7 @@ export default function UniversityPage({ params }: { params: { id: string } }): 
         )}
 
         <div id="colleges" className="border-t border-[var(--color-light)] bg-white py-10 sm:py-12 lg:py-14">
-          <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10">
+          <div className="mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-10">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">Colleges</p>
@@ -209,7 +209,7 @@ export default function UniversityPage({ params }: { params: { id: string } }): 
               {colleges.map((college) => (
                 <article
                   key={college.name}
-                  className="group rounded-[1.75rem] border border-[rgba(15,42,95,0.10)] bg-white p-5 shadow-[0_12px_30px_rgba(8,26,58,0.06)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(8,26,58,0.10)]"
+                  className="group rounded-[1.75rem] border border-[rgba(15,42,95,0.10)] bg-white p-4 shadow-[0_12px_30px_rgba(8,26,58,0.06)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(8,26,58,0.10)] sm:p-5"
                 >
                   <div className="flex items-start gap-3">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[var(--color-light)] ring-1 ring-[rgba(15,42,95,0.08)]">

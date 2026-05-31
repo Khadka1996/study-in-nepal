@@ -55,7 +55,7 @@ export default function Footer(): JSX.Element {
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,103,180,0.18)_0%,rgba(0,103,180,0.5)_100%)]" />
       <div className="absolute inset-x-0 top-0 h-1 bg-white/80" />
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-14">
+      <div className="relative mx-auto w-full max-w-7xl px-2 py-12 sm:px-6 lg:px-8 lg:py-14">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-2xl font-semibold tracking-tight sm:text-4xl">9860540054</p>
           <div className="mt-3 flex flex-col items-center justify-center gap-2 text-sm font-medium text-[rgba(255,255,255,0.9)] sm:flex-row sm:gap-4 sm:text-base">

@@ -19,7 +19,7 @@ export const dynamic = 'force-static'
 
 export default function BookingPage(): JSX.Element {
   return (
-    <main className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <main className="mx-auto w-full max-w-7xl px-2 py-16 sm:px-6 lg:px-8">
       <section className="rounded-[2rem] border border-[var(--color-light)] bg-white p-8 shadow-soft">
         <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">Booking</p>
         <h1 className="mt-4 text-4xl font-semibold text-[var(--color-dark)]">Choose an inquiry type</h1>

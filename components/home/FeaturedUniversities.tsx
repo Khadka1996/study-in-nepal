@@ -4,7 +4,7 @@ import { homeUniversities } from '@/lib/data/home'
 
 export default function FeaturedUniversities(): JSX.Element {
   return (
-    <section className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+    <section className="mx-auto w-full max-w-7xl px-2 py-10 sm:px-6 lg:px-8">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--color-secondary)]">Featured universities</p>

@@ -62,7 +62,7 @@ export default function HeroSection(): JSX.Element {
         className="pointer-events-none absolute inset-0 bg-[url('/images/bg-mapofworld.png')] bg-[center_20%] bg-no-repeat bg-[length:min(72vw,58rem)_auto] opacity-36 lg:opacity-40"
       />
       <div className="absolute inset-x-0 top-0 h-1 bg-[var(--color-secondary)]" />
-      <div className="relative mx-auto grid w-full max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:items-start lg:px-8 lg:py-24">
+      <div className="relative mx-auto grid w-full max-w-7xl gap-8 px-2 py-14 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:items-start lg:px-8 lg:py-24">
         <div className="max-w-3xl">
           <p className="inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/90 backdrop-blur">
             A Global Education Destination
