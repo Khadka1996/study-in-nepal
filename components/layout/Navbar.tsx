@@ -17,8 +17,8 @@ export default function Navbar(): JSX.Element {
   const studyLinks = [
     { label: 'Universities', href: '/universities', description: 'Compare major institutions and academic profiles.' },
     { label: 'Colleges', href: '/colleges', description: 'Browse focused college pathways and options.' },
+    { label: 'School', href: '/school', description: 'Explore school pathways and preparation for +2.' },
     { label: 'Courses', href: '/courses', description: 'Explore subject-specific study directions.' },
-    { label: 'Testimonials', href: '/testimonials', description: 'See student experiences and outcomes.' },
   ]
 
   const supportLinks = [

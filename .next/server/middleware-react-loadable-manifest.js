@@ -1,1 +1,0 @@
-self.__REACT_LOADABLE_MANIFEST='{"components/home/DeferredStudyPathways.tsx -> ./StudyPathways":{"id":2929,"files":["static/chunks/929.4365dea4252dfb14.js"]}}';

@@ -2,29 +2,52 @@
 
 const pathways = [
   {
-    title: 'Find the right level',
-    description: 'Compare undergraduate, postgraduate, diploma, and language-focused pathways for your academic profile.',
+    title: 'University',
+    description:
+      'Bachelor’s, master’s and professional degrees are offered by universities and their affiliated colleges. These programs are designed for students who have completed +2 or equivalent.',
+    details: 'Common courses',
+    highlights: 'Engineering, Business, Medicine, Computer Science',
+    href: '/universities',
   },
   {
-    title: 'Explore institutions',
-    description: 'Review trusted universities and colleges with practical information for international applications.',
+    title: '+2 / Higher Secondary',
+    description:
+      '+2 colleges are higher secondary programs after grade 10. They help students prepare for university entry with science, management, humanities and computer streams.',
+    details: 'Common streams',
+    highlights: 'Science, Management, Humanities, Computer Science',
+    href: '/colleges',
   },
   {
-    title: 'Plan your future',
-    description: 'Map studies to careers, internships, and long-term migration-friendly opportunities.',
+    title: 'School',
+    description:
+      'Schools provide lower and upper secondary education plus preparatory programs that feed into +2 and later university study.',
+    details: 'Helpful tracks',
+    highlights: 'Foundation English, Maths revision, bridging support for international learners',
+    href: '/school',
   },
 ]
 
 export default function StudyPathways(): JSX.Element {
   return (
     <section className="grid gap-6 rounded-[2rem] border border-[var(--color-light)] bg-white p-6 shadow-soft lg:grid-cols-3 lg:p-8">
-      {pathways.map((pathway, index) => (
-        <article key={pathway.title} className="rounded-3xl border border-slate-100 bg-slate-50 p-6">
-          <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[var(--color-primary)] text-sm font-semibold text-white">
-            0{index + 1}
-          </span>
-          <h3 className="mt-4 text-xl font-semibold text-[var(--color-dark)]">{pathway.title}</h3>
-          <p className="mt-3 text-sm leading-6 text-slate-600">{pathway.description}</p>
+      {pathways.map((pathway) => (
+        <article key={pathway.title} className="flex h-full flex-col justify-between rounded-[1.75rem] border border-[var(--color-light)] bg-white p-6 shadow-soft">
+          <div>
+            <h3 className="text-2xl font-semibold text-[var(--color-dark)]">{pathway.title}</h3>
+            <p className="mt-5 text-sm leading-7 text-slate-600">{pathway.description}</p>
+          </div>
+
+          <div className="mt-6 rounded-3xl border border-[var(--color-light)] bg-[var(--color-accent-faint)] p-5 text-sm">
+            <p className="font-semibold text-[var(--color-dark)]">{pathway.details}</p>
+            <p className="mt-2 text-sm leading-6 text-slate-600">{pathway.highlights}</p>
+          </div>
+
+          <a
+            href={pathway.href}
+            className="mt-6 inline-flex items-center justify-center rounded-full bg-[var(--color-primary)] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[var(--color-dark)]"
+          >
+            Learn more
+          </a>
         </article>
       ))}
     </section>
