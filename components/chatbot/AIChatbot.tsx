@@ -137,6 +137,12 @@ export default function AIChatbot(): JSX.Element | null {
     return positiveWords.includes(message.toLowerCase().trim())
   }
 
+  const isNegativeResponse = (message: string) => {
+    const negativeWords = ['no', 'nope', "don't", "do not", 'nah', 'not now', 'maybe later', 'later', 'no thanks', 'no thank you']
+    const lower = message.toLowerCase()
+    return negativeWords.some((word) => lower.includes(word))
+  }
+
   const shouldRedirect = (message: string) => {
     const redirectWords = config?.redirect_triggers || []
     return redirectWords.some((word: string) => message.toLowerCase().includes(word.toLowerCase()))
@@ -159,6 +165,8 @@ export default function AIChatbot(): JSX.Element | null {
           "Excellent! I'm connecting you with our education counselors on WhatsApp now. They'll provide personalized guidance for your study abroad journey.",
           'redirect'
         )
+      } else if (isNegativeResponse(userMessage)) {
+        botResponse = createMessage('bot', 'Thank you. If you need anything later, I am here to help.')
       } else if (chatbotData) {
         const reply = await getReply(userMessage, chatbotData)
         botResponse = createMessage('bot', reply || `Thanks — we'll follow up on "${userMessage}".`)

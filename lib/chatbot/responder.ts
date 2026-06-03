@@ -1,5 +1,6 @@
 import { detectIntent, normalize, scoreFAQ } from '@/lib/chatbot/matcher'
-import type { ChatbotData, Career, College, Course, FAQItem, University } from '@/types/chatbot'
+import type { ChatbotData, Career, College, Course, FAQItem, School, University } from '@/types/chatbot'
+import universityColleges from '@/lib/data/university-colleges'
 
 function listItems<T>(items: T[], formatter: (item: T, index: number) => string, limit = 5): string {
   return items.slice(0, limit).map((item, index) => `${index + 1}. ${formatter(item, index)}`).join('\n')
@@ -13,6 +14,15 @@ function formatUniversity(university: University): string {
 function formatCollege(college: College): string {
   const university = college.university ? ` Affiliated with ${college.university}.` : ''
   return `${college.name} (${college.city}) - ${college.description}.${university}`
+}
+
+function formatSchoolList(school: School): string {
+  return `${school.name} (${school.city})`
+}
+
+function formatSchoolBrief(school: School): string {
+  const programs = school.programs?.length ? `Teaches ${school.programs.join(', ')}.` : 'Contact us for detailed school information.'
+  return `${school.name} (${school.city}) - ${school.description} ${programs} Contact us for detailed info.`
 }
 
 function formatCourse(course: Course): string {
@@ -78,10 +88,31 @@ function findCollegeByQuery(colleges: College[], query: string): College | null 
   }) ?? null
 }
 
+function getAffiliatedCollegeNames(university: University, limit = 4): string[] {
+  const keyMap: Record<string, string> = {
+    'tribhuvan university': 'tribhuvan',
+    'kathmandu university': 'kathmandu',
+    'pokhara university': 'pokhara',
+    'purbanchal university': 'purbanchal',
+    'nepal open university': 'nepal-open',
+    'mid-west university': 'midwestern',
+    'far-western university': 'far-western',
+    'lumbini buddhist university': 'lumbini',
+    'agriculture and forestry university': 'agriculture-forestry',
+    'nepal sanskrit university': 'nepal-sanskrit',
+    'nepal medical college': 'nepal-med',
+    'b.p. koirala institute of health sciences': 'bpkihs',
+  }
+
+  const key = keyMap[university.name.toLowerCase().trim()]
+  const entries = key ? universityColleges[key] ?? [] : []
+  return entries.slice(0, limit).map((item) => item.name)
+}
+
 function formatWebsiteDetails(data: ChatbotData): string {
   const contactLines = data.general.contactInfo.map((item) => `- ${item}`).join('\n')
   return [
-    'Study in Nepal helps students compare universities, colleges, courses, career options, and scholarship guidance in Nepal.',
+    'Study in Nepal helps students compare schools, +2 colleges, universities, courses, career options, and scholarship guidance in Nepal.',
     '',
     'What you can ask me:',
     '- Show universities',
@@ -114,10 +145,14 @@ export async function getReply(message: string, data: ChatbotData): Promise<stri
     case 'university_detail': {
       const query = intent.query
       const match = findUniversityByQuery(data.universities, query) ?? data.universities[0]
+      const colleges = getAffiliatedCollegeNames(match)
+      const collegeLine = colleges.length
+        ? `Affiliated colleges: ${colleges.join(', ')}.`
+        : 'Ask me if you want a few affiliated colleges or partner campuses.'
       return [
         `${match.name}:`,
-        formatUniversity(match),
-        'You can ask for admission fit, city-based options, or related courses next.',
+        `${match.description} ${collegeLine}`,
+        'Ask me if you want more details or assistance with this university.',
       ].join('\n')
     }
 
@@ -127,6 +162,31 @@ export async function getReply(message: string, data: ChatbotData): Promise<stri
         listItems(data.colleges, formatCollege),
         'I can also compare colleges against universities if that helps.',
       ].join('\n')
+
+    case 'list_schools': {
+      const schools = data.schools ?? []
+      if (schools.length === 0) {
+        return 'I do not have school listings available right now. Please try again later or ask about colleges and universities.'
+      }
+      return [
+        'Here are some top Nepal schools and senior secondary options:',
+        listItems(schools, formatSchoolList),
+        'Ask me about any school name for a little more detail.',
+      ].join('\n')
+    }
+
+    case 'school_detail': {
+      const schools = data.schools ?? []
+      if (schools.length === 0) {
+        return 'I do not have school details available right now. Please try again later or ask about other study options.'
+      }
+      const school = schools.find((item) => intent.query.includes(normalize(item.name))) ?? schools[0]
+      return [
+        `${school.name}:`,
+        formatSchoolBrief(school),
+        'Contact us for detailed admission information or ask about another school.',
+      ].join('\n')
+    }
 
     case 'list_courses':
       return [
@@ -163,8 +223,8 @@ export async function getReply(message: string, data: ChatbotData): Promise<stri
       return [
         'Phone: +977 9860540054',
         'WhatsApp: +977 9860540054',
-        'Email: directorbusiness@icecollege.edu.np',
-        'Location: New Baneshwor, Kathmandu, Nepal',
+        'Email: inquire@studyinnepal.info',
+        'Location: Miteripul, Mandikatar, Kathmandu, Nepal',
         'Use WhatsApp or the contact page for direct help.',
       ].join('\n')
 
@@ -211,10 +271,7 @@ export async function getReply(message: string, data: ChatbotData): Promise<stri
 
     case 'unknown':
     default:
-      return [
-        'I could not confidently match that question yet.',
-        formatWebsiteDetails(data),
-      ].join(' ')
+      return 'I could not confidently match that question yet. Do you need assistance? I can direct you to WhatsApp.'
   }
 
   return 'I found related guidance, but I need a little more detail to answer well. Please ask again with a university, course, or topic name.'

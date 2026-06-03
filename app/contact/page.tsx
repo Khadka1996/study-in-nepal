@@ -26,7 +26,7 @@ export default function ContactPage(): JSX.Element {
         <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">Contact</p>
         <h1 className="mt-4 text-4xl font-semibold text-[var(--color-dark)]">Reach out for a precise answer, not a generic reply.</h1>
         <p className="mt-6 text-base leading-7 text-slate-600">
-          This contact page sends your message directly to directorbusiness@icecollege.edu.np.
+          This contact page sends your message directly to inquire@studyinnepal.info.
           If EmailJS is not configured, Gmail compose opens with your message filled in.
         </p>
         <div className="mt-8 grid gap-4 rounded-[1.75rem] bg-[var(--color-light)] p-6 text-sm text-[var(--color-dark)]">

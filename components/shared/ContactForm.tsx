@@ -26,7 +26,7 @@ interface ToastState {
 }
 
 const subjectOptions: Array<ContactFormValues['subject']> = ['Admissions', 'Universities', 'Courses', 'Booking', 'Other']
-const contactRecipientEmail = 'directorbusiness@icecollege.edu.np'
+const contactRecipientEmail = 'inquire@studyinnepal.info'
 
 export default function ContactForm(): JSX.Element {
   const [toast, setToast] = useState<ToastState | null>(null)

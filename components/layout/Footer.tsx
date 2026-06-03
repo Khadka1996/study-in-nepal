@@ -63,8 +63,8 @@ export default function Footer(): JSX.Element {
                 <a href="tel:9860540054" className="rounded-full border border-white/10 bg-[rgba(255,255,255,0.06)] px-4 py-2 shadow-[0_10px_24px_rgba(8,26,58,0.12)] transition hover:-translate-y-0.5 hover:bg-[rgba(255,255,255,0.12)] hover:text-white focus-ring">
                   9860540054
                 </a>
-                <a href="mailto:directorbusiness@icecollege.edu.np" className="rounded-full border border-white/10 bg-[rgba(255,255,255,0.06)] px-4 py-2 shadow-[0_10px_24px_rgba(8,26,58,0.12)] transition hover:-translate-y-0.5 hover:bg-[rgba(255,255,255,0.12)] hover:text-white focus-ring">
-                  directorbusiness@icecollege.edu.np
+                <a href="mailto:inquire@studyinnepal.info" className="rounded-full border border-white/10 bg-[rgba(255,255,255,0.06)] px-4 py-2 shadow-[0_10px_24px_rgba(8,26,58,0.12)] transition hover:-translate-y-0.5 hover:bg-[rgba(255,255,255,0.12)] hover:text-white focus-ring">
+                  inquire@studyinnepal.info
                 </a>
               </div>
             </div>

@@ -97,7 +97,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               '@type': 'Organization',
               name: 'Study in Nepal',
               url: 'https://studyinnepal.com',
-              logo: 'https://studyinnepal.com/logo.png',
               sameAs: [
                 'https://www.facebook.com/',
                 'https://www.instagram.com/',

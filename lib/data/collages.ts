@@ -15,6 +15,20 @@ export interface CollageItem {
 
 export const collagesData: CollageItem[] = [
   {
+    id: 'ice-college-of-art-fashion',
+    name: 'ICE College of Art and Fashion',
+    city: 'Kathmandu',
+    location: 'Kathmandu',
+    description: 'A specialized +2 and creative arts college offering strong foundation programs in fashion, design, and applied arts for students aiming at creative careers.',
+    university: 'Tribhuvan University',
+    popularCourses: ['+2 Humanities', '+2 Management', 'Fashion Design', 'Visual Arts', 'Textile Design', 'Graphic Design'],
+    bachelorCourses: ['BA Fashion Design', 'BA Interior Design'],
+    masterCourses: ['MA Design', 'MA Fashion Studies'],
+    image: '/images/ice college building.webp',
+    logo: '/images/ice college logo.svg',
+    buildingImage: '/images/ice college building.webp',
+  },
+  {
     id: 'st-xaviers',
     name: "St. Xavier's College",
     city: 'Kathmandu',

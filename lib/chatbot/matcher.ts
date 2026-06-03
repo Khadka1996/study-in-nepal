@@ -3,6 +3,7 @@ import type { ChatbotData, FAQItem, Intent, IntentType } from '@/types/chatbot'
 export const GREETINGS = ['hello', 'hi', 'hey', 'namaste', 'good morning', 'good evening']
 export const UNI_TRIGGERS = ['university', 'universities', 'campus', 'institution']
 export const COURSE_TRIGGERS = ['course', 'courses', 'program', 'programs', 'study field', 'major']
+export const SCHOOL_TRIGGERS = ['school', 'schools', 'academy', 'secondary', '+2', 'higher secondary']
 export const COLLEGE_TRIGGERS = ['college', 'colleges', 'institute', 'institutes']
 export const CAREER_TRIGGERS = ['career', 'job', 'jobs', 'work', 'employment', 'internship', 'internships']
 export const VISA_TRIGGERS = ['visa', 'student visa', 'permit', 'immigration']
@@ -119,6 +120,16 @@ export function detectIntent(message: string, data: ChatbotData): Intent {
     }
   }
 
+  if (includesAny(query, SCHOOL_TRIGGERS)) {
+    const schoolNames = (data.schools ?? []).map((school) => school.name)
+    const schoolName = bestEntityMatch(query, schoolNames)
+    return {
+      type: schoolName ? 'school_detail' : 'list_schools',
+      confidence: schoolName ? 0.88 : 0.82,
+      query,
+    }
+  }
+
   if (includesAny(query, COLLEGE_TRIGGERS)) {
     return { type: 'list_colleges', confidence: 0.9, query }
   }
@@ -171,6 +182,10 @@ export function getIntentLabel(intentType: IntentType): string {
       return 'universities'
     case 'university_detail':
       return 'university details'
+    case 'list_schools':
+      return 'schools'
+    case 'school_detail':
+      return 'school details'
     case 'list_colleges':
       return 'colleges'
     case 'college_detail':

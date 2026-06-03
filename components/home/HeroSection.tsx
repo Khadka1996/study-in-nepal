@@ -106,17 +106,7 @@ export default function HeroSection(): JSX.Element {
         </div>
 
         <div className="relative lg:-mt-12 lg:pt-0">
-          {/* Decorative brand mark using the site favicon */}
-          <div className="hidden md:block">
-            <Image
-              src="/favicon.svg"
-              alt="Study in Nepal logo"
-              width={112}
-              height={112}
-              className="pointer-events-none absolute -top-8 -right-12 h-28 w-28 rounded-xl shadow-xl"
-            />
-          </div>
-          <div className="absolute -left-8 top-10 h-28 w-28 rounded-full bg-[var(--color-secondary)]/20 blur-3xl" />
+
           <div className="absolute bottom-6 right-0 h-36 w-36 rounded-full bg-white/10 blur-3xl" />
 
           <div className="animate-fade-up-delay relative overflow-hidden rounded-[2rem] bg-transparent p-0 shadow-none">

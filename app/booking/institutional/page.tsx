@@ -30,7 +30,7 @@ export default function InstitutionalBookingPage(): JSX.Element {
           <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">Institutional Inquiry</p>
           <h1 className="mt-4 text-4xl font-semibold text-[var(--color-dark)]">Institutional partnership and inquiry requests.</h1>
           <p className="mt-6 text-base leading-7 text-slate-600">
-            Use this form to request institutional consultations, bulk admissions partnerships, or formal collaborations. Your request is sent to directorbusiness@icecollege.edu.np.
+            Use this form to request institutional consultations, bulk admissions partnerships, or formal collaborations. Your request is sent to inquire@studyinnepal.info.
           </p>
           <div className="mt-8 rounded-[1.75rem] bg-[linear-gradient(180deg,rgba(26,95,122,0.08),rgba(244,162,97,0.14))] p-6">
             <p className="text-sm font-semibold text-[var(--color-dark)]">What happens next</p>

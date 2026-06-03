@@ -56,7 +56,7 @@ function openGmailCompose(recipient: string, subject: string, body: string): voi
 export async function sendEmail(payload: EmailPayload): Promise<EmailDeliveryResult> {
   const config = getEmailJsConfig()
   const templateParams = payload.templateParams
-  const recipient = getTemplateValue(templateParams, ['to_email', 'recipient_email', 'to']) || 'directorbusiness@icecollege.edu.np'
+  const recipient = getTemplateValue(templateParams, ['to_email', 'recipient_email', 'to']) || 'inquire@studyinnepal.info'
   const subject = getTemplateValue(templateParams, ['subject'])
   const body = getTemplateValue(templateParams, ['message'])
 

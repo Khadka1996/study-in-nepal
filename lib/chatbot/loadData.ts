@@ -1,4 +1,4 @@
-import type { ChatbotData, College, Course, FAQItem, Career, GeneralInfo, University } from '@/types/chatbot'
+import type { ChatbotData, College, Course, FAQItem, Career, GeneralInfo, School, University } from '@/types/chatbot'
 
 type DataCache = ChatbotData | null
 
@@ -26,15 +26,17 @@ export async function loadChatbotData(): Promise<ChatbotData> {
 
   pendingLoad = Promise.all([
     fetchJsonFile<University[]>('/data/universities.json'),
+    fetchJsonFile<School[]>('/data/schools.json'),
     fetchJsonFile<College[]>('/data/colleges.json'),
     fetchJsonFile<Course[]>('/data/courses.json'),
     fetchJsonFile<FAQItem[]>('/data/faq.json'),
     fetchJsonFile<Career[]>('/data/careers.json'),
     fetchJsonFile<GeneralInfo>('/data/general.json'),
   ])
-    .then(([universities, colleges, courses, faqs, careers, general]) => {
+    .then(([universities, schools, colleges, courses, faqs, careers, general]) => {
       dataCache = {
         universities,
+        schools,
         colleges,
         courses,
         faqs,

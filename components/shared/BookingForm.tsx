@@ -29,7 +29,7 @@ interface BookingSuccessState {
 }
 
 const timeSlotOptions: Array<BookingFormValues['timeSlot']> = ['Morning', 'Afternoon', 'Evening']
-const bookingRecipientEmail = 'directorbusiness@icecollege.edu.np'
+const bookingRecipientEmail = 'inquire@studyinnepal.info'
 
 function createReference(): string {
   return `BK-${Date.now().toString(36).toUpperCase()}`

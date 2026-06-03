@@ -8,6 +8,13 @@ export interface SchoolItem {
 
 export const schoolsData: SchoolItem[] = [
   {
+    id: 'euro-school-nepal',
+    name: 'Euro School Nepal',
+    location: 'Kathmandu',
+    description: 'A leading international school in Kathmandu with strong secondary education, English-medium teaching, and quality preparation for grade 10 board exams.',
+    programs: ['Nursery to Grade 10'],
+  },
+  {
     id: 'budhanilkantha-school',
     name: 'Budhanilkantha School',
     location: 'Kathmandu',

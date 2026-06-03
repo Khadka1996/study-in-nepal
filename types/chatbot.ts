@@ -28,6 +28,13 @@ export interface College {
   popularCourses?: string[]
 }
 
+export interface School {
+  name: string
+  city: string
+  description: string
+  programs?: string[]
+}
+
 export interface Course {
   name: string
   level: 'Certificate' | 'Diploma' | 'Bachelor' | 'Master' | 'PhD' | 'Short Course'
@@ -61,6 +68,8 @@ export interface GeneralInfo {
 export type IntentType =
   | 'list_universities'
   | 'university_detail'
+  | 'list_schools'
+  | 'school_detail'
   | 'list_colleges'
   | 'list_courses'
   | 'course_detail'
@@ -81,6 +90,7 @@ export interface Intent {
 
 export interface ChatbotData {
   universities: University[]
+  schools: School[]
   colleges: College[]
   courses: Course[]
   faqs: FAQItem[]

@@ -1,5 +1,12 @@
 [
   {
+    "name": "ICE College of Art and Fashion",
+    "city": "Kathmandu",
+    "description": "A specialized +2 and creative arts college offering foundation programs in fashion design, visual arts, and media for future creative careers.",
+    "university": "Tribhuvan University",
+    "popularCourses": ["Fashion Design", "Visual Arts", "Graphic Design"]
+  },
+  {
     "name": "St. Xavier's College",
     "city": "Kathmandu",
     "description": "A highly regarded college with strong management, science, and humanities offerings.",
