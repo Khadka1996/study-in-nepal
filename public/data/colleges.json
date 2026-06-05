@@ -1,10 +1,10 @@
 [
   {
-    "name": "ICE College of Art and Fashion",
+    "name": "IEC College of Art & Fashion: Fashion & Interior Designing",
     "city": "Kathmandu",
-    "description": "A specialized +2 and creative arts college offering foundation programs in fashion design, visual arts, and media for future creative careers.",
-    "university": "Tribhuvan University",
-    "popularCourses": ["Fashion Design", "Visual Arts", "Graphic Design"]
+    "description": "A design-focused college offering only Fashion Design and Interior Design programs, affiliated with Teesside University (UK), and providing 4-year bachelor's degrees.",
+    "university": "Teesside University, UK",
+    "popularCourses": ["Fashion Design", "Interior Design"]
   },
   {
     "name": "St. Xavier's College",

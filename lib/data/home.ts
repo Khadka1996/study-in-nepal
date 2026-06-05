@@ -21,7 +21,7 @@ export interface HomeTestimonial {
   countryFlag: string
   university: string
   quote: string
-  imageSrc: string
+  imageSrc?: string
 }
 
 export const homeStats: HomeStat[] = [
@@ -99,20 +99,20 @@ export const homeTestimonials: HomeTestimonial[] = [
     countryFlag: '🇧🇩',
     university: 'Kathmandu University',
     quote: 'The guidance was clear, calm, and more useful than the generic advice I had seen elsewhere.',
-    imageSrc: '/images/student-1.svg',
+    imageSrc: '/images/student-female.png',
   },
   {
     name: 'Rohan Patel',
     countryFlag: '🇮🇳',
     university: 'Tribhuvan University',
     quote: 'The portal helped me compare options quickly and understand what mattered for my application.',
-    imageSrc: '/images/student-2.svg',
+    imageSrc: '/images/student-male.png',
   },
   {
     name: 'Sara Mendez',
     countryFlag: '🇳🇬',
     university: 'Pokhara University',
     quote: 'I liked the practical approach. It felt designed for decision-making, not just browsing.',
-    imageSrc: '/images/student-3.svg',
+    imageSrc: '/images/student-female.png',
   },
 ]

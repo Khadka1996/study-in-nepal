@@ -16,12 +16,12 @@ export interface CollageItem {
 export const collagesData: CollageItem[] = [
   {
     id: 'ice-college-of-art-fashion',
-    name: 'ICE College of Art and Fashion',
+    name: 'IEC College of Art & Fashion: Fashion & Interior Designing',
     city: 'Kathmandu',
     location: 'Kathmandu',
-    description: 'A specialized +2 and creative arts college offering strong foundation programs in fashion, design, and applied arts for students aiming at creative careers.',
-    university: 'Tribhuvan University',
-    popularCourses: ['+2 Humanities', '+2 Management', 'Fashion Design', 'Visual Arts', 'Textile Design', 'Graphic Design'],
+    description: 'A design-focused college offering only Fashion Design and Interior Design programs, affiliated with Teesside University (UK), and providing 4-year bachelor degrees.',
+    university: 'Teesside University, UK',
+    popularCourses: ['Fashion Design', 'Interior Design'],
     bachelorCourses: ['BA Fashion Design', 'BA Interior Design'],
     masterCourses: ['MA Design', 'MA Fashion Studies'],
     image: '/images/ice college building.webp',
