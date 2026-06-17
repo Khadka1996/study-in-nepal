@@ -25,6 +25,11 @@
     "tags": ["scholarship", "fees", "cost"]
   },
   {
+    "question": "What facilities are available on campus?",
+    "answer": "Most campuses offer libraries, computer labs, science labs, hostels, cafeterias, internet access, sports areas, and student support services. Ask me for a specific university and I will narrow it down, or browse [universities](/universities) and [colleges](/colleges).",
+    "tags": ["facilities", "campus", "hostel", "library", "lab", "sports"]
+  },
+  {
     "question": "What are the most popular cities for students?",
     "answer": "Kathmandu, Lalitpur, Pokhara, and Biratnagar are among the most common student cities.",
     "tags": ["city", "kathmandu", "pokhara"]

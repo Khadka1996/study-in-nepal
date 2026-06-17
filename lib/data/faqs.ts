@@ -1,6 +1,7 @@
 export interface FaqItem {
   question: string
   answer: string
+  tags?: string[]
 }
 
 export const studyInfoFaqs: FaqItem[] = [
@@ -23,6 +24,7 @@ export const studyInfoFaqs: FaqItem[] = [
   {
     question: 'Are scholarships available?',
     answer: 'Some universities and colleges offer fee reductions, merit-based support, or targeted scholarships, but availability is limited and competitive.',
+    tags: ['scholarship', 'scholarships', 'funding', 'financial aid', 'grant', 'fee reduction'],
   },
   {
     question: 'What is student life like in Kathmandu and other cities?',

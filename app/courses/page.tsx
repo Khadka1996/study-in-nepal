@@ -39,9 +39,13 @@ export default function CoursesPage(): JSX.Element {
         </p>
         <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {['Business', 'IT', 'Hospitality', 'Health', 'Education', 'Engineering', 'Arts', 'Languages'].map((course) => (
-            <div key={course} className="rounded-3xl bg-[var(--color-light)] p-5 text-sm font-medium text-[var(--color-dark)]">
+            <Link
+              key={course}
+              href="/universities"
+              className="rounded-3xl bg-[var(--color-light)] p-5 text-sm font-medium text-[var(--color-dark)] transition hover:-translate-y-0.5 hover:shadow-md hover:bg-white cursor-pointer"
+            >
               {course}
-            </div>
+            </Link>
           ))}
         </div>
         {/* pathway cards moved outside the main card for better mobile layout */}

@@ -7,7 +7,7 @@ export const SCHOOL_TRIGGERS = ['school', 'schools', 'academy', 'secondary', '+2
 export const COLLEGE_TRIGGERS = ['college', 'colleges', 'institute', 'institutes']
 export const CAREER_TRIGGERS = ['career', 'job', 'jobs', 'work', 'employment', 'internship', 'internships']
 export const VISA_TRIGGERS = ['visa', 'student visa', 'permit', 'immigration']
-export const COST_TRIGGERS = ['cost', 'fee', 'fees', 'tuition', 'budget', 'living cost', 'scholarship']
+export const COST_TRIGGERS = ['cost', 'fee', 'fees', 'tuition', 'budget', 'living cost']
 export const SERVICE_TRIGGERS = ['service', 'services', 'offer', 'offered', 'do you offer', 'what can you help with']
 export const CONTACT_TRIGGERS = ['phone', 'address', 'contact', 'email', 'whatsapp', 'call us']
 

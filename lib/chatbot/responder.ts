@@ -2,6 +2,14 @@ import { detectIntent, normalize, scoreFAQ } from '@/lib/chatbot/matcher'
 import type { ChatbotData, Career, College, Course, FAQItem, School, University } from '@/types/chatbot'
 import universityColleges from '@/lib/data/university-colleges'
 
+const pageLinks = {
+  universities: '[Universities](/universities)',
+  colleges: '[Colleges](/colleges)',
+  courses: '[Courses](/courses)',
+  booking: '[Booking page](/booking)',
+  contact: '[Contact page](/contact)',
+}
+
 function listItems<T>(items: T[], formatter: (item: T, index: number) => string, limit = 5): string {
   return items.slice(0, limit).map((item, index) => `${index + 1}. ${formatter(item, index)}`).join('\n')
 }
@@ -115,8 +123,8 @@ function formatWebsiteDetails(data: ChatbotData): string {
     'Study in Nepal helps students compare schools, +2 colleges, universities, courses, career options, and scholarship guidance in Nepal.',
     '',
     'What you can ask me:',
-    '- Show universities',
-    '- Show colleges',
+    `- Browse ${pageLinks.universities}, ${pageLinks.colleges}, or ${pageLinks.courses}`,
+    `- Open the ${pageLinks.booking} or ${pageLinks.contact}`,
     '- Tell me about a university by name',
     '- Ask about fees, visa, scholarships, or facilities',
     '',
@@ -132,14 +140,14 @@ export async function getReply(message: string, data: ChatbotData): Promise<stri
     case 'greeting':
       return [
         'Namaste. I can help you compare universities, colleges, courses, career paths, and Nepal study FAQs.',
-        'Try asking: "list universities in Kathmandu" or "which course fits business careers?"',
+        `Try ${pageLinks.universities}, ${pageLinks.colleges}, or ask which course fits business, IT, or medicine.`,
       ].join(' ')
 
     case 'list_universities':
       return [
         'Here are some notable Nepal universities:',
         listItems(data.universities, formatUniversity),
-        'If you want, I can also narrow these by city or course area.',
+        `Browse more on the ${pageLinks.universities} or ask me to narrow by city or course area.`,
       ].join('\n')
 
     case 'university_detail': {
@@ -152,7 +160,7 @@ export async function getReply(message: string, data: ChatbotData): Promise<stri
       return [
         `${match.name}:`,
         `${match.description} ${collegeLine}`,
-        'Ask me if you want more details or assistance with this university.',
+        `Open the ${pageLinks.universities} for more options or the ${pageLinks.booking} if you want direct help choosing a program.`,
       ].join('\n')
     }
 
@@ -160,7 +168,7 @@ export async function getReply(message: string, data: ChatbotData): Promise<stri
       return [
         'Here are some Nepal colleges worth exploring:',
         listItems(data.colleges, formatCollege),
-        'I can also compare colleges against universities if that helps.',
+        `Browse more on the ${pageLinks.colleges}, or ask me to compare colleges against universities by city or course area.`,
       ].join('\n')
 
     case 'list_schools': {
@@ -192,7 +200,7 @@ export async function getReply(message: string, data: ChatbotData): Promise<stri
       return [
         'Popular study fields in Nepal include:',
         listItems(data.courses, formatCourse),
-        'Ask for a specific course if you want admission or career guidance.',
+        `See more on the ${pageLinks.courses}, or ask for a specific course if you want admission or career guidance.`,
       ].join('\n')
 
     case 'course_detail': {
@@ -215,8 +223,8 @@ export async function getReply(message: string, data: ChatbotData): Promise<stri
     case 'service_info':
       return [
         'We help with university selection, course planning, admissions support, consultation booking, and follow-up.',
-        'You can ask me to show universities, colleges, courses, facilities, scholarships, visa notes, or contact details.',
-        'If you want, I can also recommend a study path based on your subject interest.',
+        `You can ask me to show ${pageLinks.universities}, ${pageLinks.colleges}, ${pageLinks.courses}, facilities, scholarships, visa notes, or contact details.`,
+        `If you want, I can also recommend a study path or take you to the ${pageLinks.booking}.`,
       ].join(' ')
 
     case 'contact_info':
@@ -225,7 +233,7 @@ export async function getReply(message: string, data: ChatbotData): Promise<stri
         'WhatsApp: +977 9860540054',
         'Email: inquire@studyinnepal.info',
         'Location: Miteripul, Mandikatar, Kathmandu, Nepal',
-        'Use WhatsApp or the contact page for direct help.',
+        `Use WhatsApp or the ${pageLinks.contact} for direct help.`,
       ].join('\n')
 
     case 'college_detail': {
@@ -267,6 +275,8 @@ export async function getReply(message: string, data: ChatbotData): Promise<stri
         '',
         'Contact notes:',
         ...data.general.contactInfo.map((item) => `- ${item}`),
+        '',
+        `You can also browse ${pageLinks.universities} and ${pageLinks.colleges} or open the ${pageLinks.booking}.`,
       ].join('\n')
 
     case 'unknown':

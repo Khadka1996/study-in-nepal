@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, type ReactNode } from 'react'
 
 const IconTimes = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className={className} aria-hidden>
@@ -23,6 +23,40 @@ const IconBot = ({ className }: { className?: string }) => (
     <rect x="7" y="1" width="10" height="2" rx="1" fill="currentColor" />
   </svg>
 )
+
+const markdownLinkPattern = /\[([^\]]+)\]\((https?:\/\/[^)\s]+|\/[^)\s]+)\)/g
+
+function renderMessageText(text: string, sender: 'bot' | 'user'): ReactNode {
+  const nodes: ReactNode[] = []
+  let lastIndex = 0
+
+  text.replace(markdownLinkPattern, (match, label, href, offset) => {
+    if (offset > lastIndex) {
+      nodes.push(text.slice(lastIndex, offset))
+    }
+
+    nodes.push(
+      <a
+        key={`${href}-${offset}`}
+        href={href}
+        target={href.startsWith('http') ? '_blank' : undefined}
+        rel={href.startsWith('http') ? 'noreferrer noopener' : undefined}
+        className={sender === 'user' ? 'underline underline-offset-2 text-white/90 hover:text-white' : 'underline underline-offset-2 text-[var(--color-primary)] hover:text-[var(--color-secondary)]'}
+      >
+        {label}
+      </a>
+    )
+
+    lastIndex = offset + match.length
+    return match
+  })
+
+  if (lastIndex < text.length) {
+    nodes.push(text.slice(lastIndex))
+  }
+
+  return nodes
+}
 
 type ChatConfig = {
   enabled?: boolean
@@ -434,7 +468,7 @@ export default function AIAssistantWidget(): JSX.Element | null {
             {messages.map(message => (
               <div key={message.id} className={`mb-4 flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[85%] rounded-2xl px-4 py-2 ${
-                    message.sender === 'user' ? 'bg-[var(--color-primary)] text-white rounded-br-none' : 'bg-white text-gray-800 shadow-md rounded-bl-none'
+                  <p className="text-sm whitespace-pre-line break-words">{renderMessageText(message.text, message.sender)}</p>
                 }`}>
                   <p className="text-sm whitespace-pre-line break-words">{message.text}</p>
                   <p className={`text-xs mt-1 ${message.sender === 'user' ? 'text-[var(--color-secondary)]' : 'text-gray-500'}`}>

@@ -1,6 +1,6 @@
  'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 
 import { loadChatbotData } from '@/lib/chatbot/loadData'
 import { getReply } from '@/lib/chatbot/responder'
@@ -37,6 +37,40 @@ const IconWhatsapp = ({ className }: { className?: string }) => (
     <path d="M17.6 14.2c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-1.76-.87-2.9-1.57-4.06-3.5-.3-.5.3-.46.86-1.52.1-.2 0-.37-.05-.52-.1-.15-.67-1.52-.92-2.08-.24-.55-.48-.48-.66-.49-.17 0-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.03 1.01-1.03 2.46s1.05 2.86 1.2 3.06c.15.2 2.06 3.22 5 4.51 2.98 1.3 3.44 1.09 4.06 1.02.62-.07 1.99-.81 2.28-1.59.3-.78.3-1.45.21-1.59-.08-.15-.27-.24-.57-.39z" />
   </svg>
 )
+
+const markdownLinkPattern = /\[([^\]]+)\]\((https?:\/\/[^)\s]+|\/[^)\s]+)\)/g
+
+function renderMessageText(text: string, sender: ChatSender): ReactNode {
+  const nodes: ReactNode[] = []
+  let lastIndex = 0
+
+  text.replace(markdownLinkPattern, (match, label, href, offset) => {
+    if (offset > lastIndex) {
+      nodes.push(text.slice(lastIndex, offset))
+    }
+
+    nodes.push(
+      <a
+        key={`${href}-${offset}`}
+        href={href}
+        target={href.startsWith('http') ? '_blank' : undefined}
+        rel={href.startsWith('http') ? 'noreferrer noopener' : undefined}
+        className={sender === 'user' ? 'underline underline-offset-2 text-white/90 hover:text-white' : 'underline underline-offset-2 text-[var(--color-secondary)] hover:text-[var(--color-primary)]'}
+      >
+        {label}
+      </a>
+    )
+
+    lastIndex = offset + match.length
+    return match
+  })
+
+  if (lastIndex < text.length) {
+    nodes.push(text.slice(lastIndex))
+  }
+
+  return nodes
+}
 
 export default function AIChatbot(): JSX.Element | null {
   const [isOpen, setIsOpen] = useState(false)
@@ -277,8 +311,8 @@ export default function AIChatbot(): JSX.Element | null {
             {messages.map((message) => (
               <div key={message.id} className={`mb-4 flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[85%] rounded-2xl px-4 py-2 ${message.sender === 'user' ? 'bg-[var(--color-primary)] text-white rounded-br-none' : 'bg-white text-gray-800 shadow-md rounded-bl-none'}`}>
-                  <p className="text-sm whitespace-pre-line break-words">{message.text}</p>
-                  <p className={`text-xs mt-1 ${message.sender === 'user' ? 'text-[var(--color-secondary)]' : 'text-gray-500'}`}>{new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+                  <p className="text-sm whitespace-pre-line break-words">{renderMessageText(message.text, message.sender)}</p>
+                  <p className={`text-xs mt-1 ${message.sender === 'user' ? 'text-gray-300' : 'text-gray-500'}`}>{new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
                 </div>
               </div>
             ))}
