@@ -463,18 +463,6 @@ export default function Navbar(): JSX.Element {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </a>
-                    <a href="#" onClick={(e) => { e.preventDefault(); closeMenus() }} className="mt-1 flex items-center justify-between rounded-2xl px-4 py-3 transition hover:bg-[rgba(15,42,95,0.05)]">
-                      <span className="block text-sm font-semibold text-[var(--color-dark)]">IEC Tech</span>
-                      <svg className="h-4 w-4 flex-shrink-0 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </a>
-                    <a href="#" onClick={(e) => { e.preventDefault(); closeMenus() }} className="mt-1 flex items-center justify-between rounded-2xl px-4 py-3 transition hover:bg-[rgba(15,42,95,0.05)]">
-                      <span className="block text-sm font-semibold text-[var(--color-dark)]">IEC Studio</span>
-                      <svg className="h-4 w-4 flex-shrink-0 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </a>
                   </div>
                 </div>
               )}
@@ -670,18 +658,6 @@ export default function Navbar(): JSX.Element {
                 </a>
                 <a href="https://iecsaf.com/" target="_blank" rel="noreferrer noopener" className="mt-1 flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium text-[var(--color-dark)] transition hover:bg-white">
                   <span className="block">IEC School of Art and Fashion</span>
-                  <svg className="h-4 w-4 flex-shrink-0 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </a>
-                <a href="#" onClick={(e) => e.preventDefault()} className="mt-1 flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium text-[var(--color-dark)] transition hover:bg-white">
-                  <span className="block">IEC Tech</span>
-                  <svg className="h-4 w-4 flex-shrink-0 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </a>
-                <a href="#" onClick={(e) => e.preventDefault()} className="mt-1 flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium text-[var(--color-dark)] transition hover:bg-white">
-                  <span className="block">IEC Studio</span>
                   <svg className="h-4 w-4 flex-shrink-0 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
